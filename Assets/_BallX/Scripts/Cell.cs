@@ -13,6 +13,8 @@ namespace AppAdvisory.BallX
 
 		public event OnDestroyedEventHandler OnDestroyedByBall;
 
+		public string cellName = "Unknown";
+
 		public int _count;
 		public int Count 
 		{
