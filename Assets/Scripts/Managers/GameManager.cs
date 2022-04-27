@@ -1,26 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
-using AppAdvisory.Utils;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using AppAdvisory.Utils;
 using AppAdvisory.BallX;
 
-/*
-#pragma warning disable 0162 // code unreached.
-#pragma warning disable 0168 // variable declared but not used.
-#pragma warning disable 0219 // variable assigned but not used.
-#pragma warning disable 0414 // private field assigned but not used.
-#pragma warning disable 0618 // obslolete
-#pragma warning disable 0108
-#pragma warning disable 0649 //never used
-*/
-
 namespace BloodyBalls.Managers {
+	/// <summary>
+	/// Main manager that literally takes care of everything in the game.
+	/// </summary>
 	public class GameManager : MonoBehaviour {
-		private static readonly string VerySimpleAdsURL = "http://u3d.as/oWD";
-
-		private static readonly string VerySimpleRateURL = "http://u3d.as/Dt2";
-
 		[SerializeField] private float speed = 10;
 
 		[SerializeField] private float spawnFrequency = 0.25f;
@@ -135,8 +124,6 @@ namespace BloodyBalls.Managers {
 		#region UI
 		void SubscribeToUIManager() {
 			uiManager.PlayButtonClicked += OnPlayButtonClicked;
-			uiManager.WatchAdButtonClicked += OnWatchAdButtonClicked;
-			uiManager.RateButtonClicked += OnRateButtonClicked;
 			uiManager.MainMenuButtonClicked += OnMainMenuButtonClicked;
 			uiManager.ReplayButtonClicked += OnReplayButtonClicked;
 		}
@@ -144,30 +131,6 @@ namespace BloodyBalls.Managers {
 
 		void OnPlayButtonClicked() {
 			StartGame();
-		}
-
-		void OnWatchAdButtonClicked() {
-#if APPADVISORY_ADS
-			AdsManager.instance.ShowRewardedVideo((bool isSuccess) => {
-				if(isSuccess)
-					Utils.AddCoins(coinsPerVideo);
-			});
-#else
-			Debug.LogWarning("To show video ads, please have a look at Very Simple Ad on the Asset Store, or go to this link: " + VerySimpleAdsURL);
-#endif
-		}
-
-		void OnRateButtonClicked() {
-#if VSRATE
-			RateUsManager.ShowRateUsWindows();
-
-#else
-			Debug.LogWarning("To rate the game, please have a look at Very Simple Rate on the Asset Store, or go to this link: " + VerySimpleRateURL);
-#endif
-		}
-
-		void OnShopButtonClicked() {
-
 		}
 
 		void OnReplayButtonClicked() {
@@ -497,7 +460,6 @@ namespace BloodyBalls.Managers {
 			PlayerPrefs.Save();
 #else
 			if (count >= numberOfPlayToShowInterstitial) {
-				Debug.LogWarning("To show ads, please have a look at Very Simple Ad on the Asset Store, or go to this link: " + VerySimpleAdsURL);
 				PlayerPrefs.SetInt("GAMEOVER_COUNT", 0);
 			} else {
 				PlayerPrefs.SetInt("GAMEOVER_COUNT", count);
