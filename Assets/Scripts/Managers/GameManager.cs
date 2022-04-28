@@ -219,6 +219,7 @@ namespace BloodyBalls.Managers {
 		/// Creates a super cell whenever there are 3 cells of the same type together.
 		/// </summary>
 		private void CreateSuperCells() {
+#if SUPERCELLS
 			// Go through the spawned cells.
 			for (int i = 0; i < spawnedCells.Count; i++) {
 				// Filter out only proper cells.
@@ -270,6 +271,7 @@ namespace BloodyBalls.Managers {
 					}
 				}
 			}
+#endif
 		}
 
 		private IEnumerator NextTurnCoroutine() {
@@ -411,8 +413,8 @@ namespace BloodyBalls.Managers {
 
 			cell.OnDestroyedByBall += Cell_OnDestroyedByBall;
 
-			//spawnedCells.Add(cell.transform);
-			spawnedCells.Insert(0, cell.transform);
+			spawnedCells.Add(cell.transform);
+			//spawnedCells.Insert(0, cell.transform);
 			int count = Random.Range(currentMinCellCount, currentMaxCellCount + 1);
 			//cell.Count = count;
 			cell._count = count;
