@@ -131,6 +131,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 21262904}
   number: {fileID: 10283724}
+  cellName: Cigar
+  gridX: 0
+  gridY: 0
   _count: 0
 --- !u!60 &6005092
 PolygonCollider2D:

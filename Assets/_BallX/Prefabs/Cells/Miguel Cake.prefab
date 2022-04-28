@@ -157,6 +157,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 21289894}
   number: {fileID: 10271308}
+  cellName: Cake
+  gridX: 0
+  gridY: 0
   _count: 0
 --- !u!1 &187984
 GameObject:

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using AppAdvisory.Utils;
 using AppAdvisory.BallX;
+using BloodyBalls.Cells;
 
 namespace BloodyBalls.Managers {
 	/// <summary>
@@ -96,9 +97,10 @@ namespace BloodyBalls.Managers {
 		private Rect screenRect;
 		//[SerializeField, Range(0f, 1f)] private float distanceBetweenCellsCoeff = 0.1f;
 
+		public List<Transform> spawnedCells;
+
 		private float stepX;
 		private float maxCellProbability;
-		private List<Transform> cells;
 		private Transform gridContainer;
 		private Vector3 bottomLimit;
 
@@ -167,7 +169,7 @@ namespace BloodyBalls.Managers {
 			float startOffset = stepX / 2;
 
 			gridContainer = new GameObject("Grid").transform;
-			cells = new List<Transform>();
+			spawnedCells = new List<Transform>();
 
 			for (int i = 0; i < brickProbabilities.Length; i++) {
 				maxCellProbability += brickProbabilities[i];
@@ -197,9 +199,14 @@ namespace BloodyBalls.Managers {
 
 		private void MoveGrid() {
 			Vector3 endPosition;
-			foreach (Transform gridCell in cells) {
+			foreach (Transform gridCell in spawnedCells) {
 				endPosition = gridCell.position - Vector3.up * stepX;
 				gridCell.DOMove(gridCell.position, endPosition, 0.5f);
+
+				Cell cell = gridCell.GetComponent<Cell>();
+				if (cell != null) {
+					cell.MoveToNextLine();
+				}
 			}
 		}
 
@@ -208,11 +215,68 @@ namespace BloodyBalls.Managers {
 			StartCoroutine(NextTurnCoroutine());
 		}
 
+		/// <summary>
+		/// Creates a super cell whenever there are 3 cells of the same type together.
+		/// </summary>
+		private void CreateSuperCells() {
+			// Go through the spawned cells.
+			for (int i = 0; i < spawnedCells.Count; i++) {
+				// Filter out only proper cells.
+				Cell masterCell = spawnedCells[i].GetComponent<Cell>();
+				if (masterCell == null)
+					continue;
+				if ((i + 1) >= spawnedCells.Count)
+					break;
+				Cell adjCell = spawnedCells[i + 1].GetComponent<Cell>();
+				if (adjCell == null)
+					continue;
+
+				// Stop looking whenever we go past the first line.
+				if (masterCell.gridY > 1)
+					break;
+
+				// Check if we have an adjacent cell.
+				if ((masterCell.cellName == adjCell.cellName) && (masterCell.gridX == (adjCell.gridX - 1))) {
+					// Found an adjacent cell, look for a bottom one.
+					for (int j = i + 2; j < spawnedCells.Count; j++) {
+						// Get adjacent cell.
+						Cell bottomCell = spawnedCells[j].GetComponent<Cell>();
+						if (bottomCell == null)
+							continue;
+
+						// Only look for things in the second line and below the found ones.
+						if ((bottomCell.gridY == 1) || ((bottomCell.gridX != masterCell.gridX) && (bottomCell.gridX != adjCell.gridX)))
+							continue;
+
+						// Check if we have a bottom cell.
+						if (bottomCell.cellName == masterCell.cellName) {
+							Debug.Log("CREATE A MASTER CELL! " + masterCell.cellName);
+							Debug.Log("(" + masterCell.gridX + ", " + masterCell.gridY + ") (" +
+								adjCell.gridX + ", " + adjCell.gridY + ") (" + bottomCell.gridX +
+								", " + bottomCell.gridY + ")");
+
+							Debug.DrawLine(masterCell.transform.position, adjCell.transform.position, Color.red);
+							Debug.DrawLine(masterCell.transform.position, bottomCell.transform.position, Color.red);
+							Debug.DrawLine(bottomCell.transform.position, adjCell.transform.position, Color.red);
+
+							masterCell.Color = Color.black;
+							adjCell.Color = Color.black;
+							bottomCell.Color = Color.black;
+						}
+
+						// Stop looking whenever we go past the second line.
+						if (bottomCell.gridY > 2)
+							break;
+					}
+				}
+			}
+		}
+
 		private IEnumerator NextTurnCoroutine() {
 			CreateLine();
 			MoveGrid();
+			CreateSuperCells();
 			UpgradeDifficulty();
-
 
 			if (CheckLoose()) {
 				ballToAddCount = 0;
@@ -236,9 +300,9 @@ namespace BloodyBalls.Managers {
 		private void GameOver() {
 			ShowAds();
 
-			for (int i = cells.Count - 1; i > -1; i--) {
-				Destroy(cells[i].gameObject);
-				cells.RemoveAt(i);
+			for (int i = spawnedCells.Count - 1; i > -1; i--) {
+				Destroy(spawnedCells[i].gameObject);
+				spawnedCells.RemoveAt(i);
 			}
 
 			DisplayPlayer(false);
@@ -267,14 +331,14 @@ namespace BloodyBalls.Managers {
 		}
 
 		private bool CheckLoose() {
-			if (cells.Count == 0)
+			if (spawnedCells.Count == 0)
 				return false;
 
-			for (int i = 0; i < cells.Count; i++) {
-				if (cells[i].CompareTag(Constants.PICKABLE_TAG))
+			for (int i = 0; i < spawnedCells.Count; i++) {
+				if (spawnedCells[i].CompareTag(Constants.PICKABLE_TAG))
 					continue;
 
-				Vector3 startPosition = cells[i].position;
+				Vector3 startPosition = spawnedCells[i].position;
 
 
 				int layerMask = ~((1 << 9) | (1 << 10));
@@ -310,16 +374,17 @@ namespace BloodyBalls.Managers {
 			powerupTransform.SetParent(gridContainer);
 			powerupTransform.localPosition = GetPositionFromModel(x, y);
 			powerupTransform.localScale *= stepX;
-			cells.Add(powerupTransform);
+			//spawnedCells.Add(powerupTransform);
+			spawnedCells.Insert(0, powerupTransform);
 		}
 
 		private void AddBall_OnCollision(AddBall sender) {
-			cells.Remove(sender.transform);
+			spawnedCells.Remove(sender.transform);
 			ballToAddCount++;
 		}
 
 		private void AddCoin_OnCollision(AddCoin sender) {
-			cells.Remove(sender.transform);
+			spawnedCells.Remove(sender.transform);
 			Utils.AddCoins(1);
 			uiManager.SetHUDCoins(Utils.GetCoins());
 		}
@@ -341,10 +406,13 @@ namespace BloodyBalls.Managers {
 			cell.gameObject.name += "_" + x.ToString();
 			cell.transform.localScale *= stepX;
 			cell.transform.localPosition = GetPositionFromModel(x, y);
+			cell.gridX = x;
+			cell.gridY = y;
 
 			cell.OnDestroyedByBall += Cell_OnDestroyedByBall;
 
-			cells.Add(cell.transform);
+			//spawnedCells.Add(cell.transform);
+			spawnedCells.Insert(0, cell.transform);
 			int count = Random.Range(currentMinCellCount, currentMaxCellCount + 1);
 			//cell.Count = count;
 			cell._count = count;
@@ -355,7 +423,7 @@ namespace BloodyBalls.Managers {
 
 		void Cell_OnDestroyedByBall(IHitableByBall sender) {
 			MonoBehaviour mono = (MonoBehaviour)sender;
-			cells.Remove(mono.transform);
+			spawnedCells.Remove(mono.transform);
 		}
 
 		Vector3 GetPositionFromModel(int x, int y) {

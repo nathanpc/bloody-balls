@@ -15,6 +15,9 @@ namespace BloodyBalls.Cells {
 
 		public string cellName = "Unknown";
 
+		public int gridX = 0;
+		public int gridY = 0;
+
 		public int _count;
 		public int Count {
 			get {
@@ -27,7 +30,6 @@ namespace BloodyBalls.Cells {
 			}
 		}
 
-
 		public Color Color {
 			get {
 				return spriteRenderer.color;
@@ -37,6 +39,9 @@ namespace BloodyBalls.Cells {
 			}
 		}
 
+		public void MoveToNextLine() {
+			gridY++;
+		}
 
 		public void SetCount(int count) {
 
@@ -94,9 +99,6 @@ namespace BloodyBalls.Cells {
 
 			spriteRenderer.transform.localScale = startScale;
 		}
-
-
-
 
 		public void BallHit(Ball ball) {
 			//Count--;

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using AppAdvisory.BallX;
+using BloodyBalls.Cells;
 
 namespace BloodyBalls.PowerUps {
 	/// <summary>
