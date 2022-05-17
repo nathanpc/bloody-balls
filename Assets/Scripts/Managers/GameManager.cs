@@ -11,6 +11,8 @@ namespace BloodyBalls.Managers {
 	/// Main manager that literally takes care of everything in the game.
 	/// </summary>
 	public class GameManager : MonoBehaviour {
+		[SerializeField] private NotificationManager notificationManager;
+
 		[SerializeField] private float speed = 10;
 
 		[SerializeField] private float spawnFrequency = 0.25f;
@@ -297,6 +299,8 @@ namespace BloodyBalls.Managers {
 
 			}
 
+			// TODO: Move this to a "level manager"
+			notificationManager.Notify("O colesterol é responsável por cerca de um terço de todas as doenças cardiovasculares no mundo.\n\n<b>Tome cuidado com este nível, e o seu colesterol!</b>");
 		}
 
 		private void GameOver() {
