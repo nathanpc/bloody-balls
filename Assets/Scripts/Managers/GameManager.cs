@@ -5,21 +5,26 @@ using UnityEngine.SceneManagement;
 using AppAdvisory.Utils;
 using AppAdvisory.BallX;
 using BloodyBalls.Cells;
+using BloodyBalls.Levels;
+using BloodyBalls.Utilities;
 
 namespace BloodyBalls.Managers {
 	/// <summary>
 	/// Main manager that literally takes care of everything in the game.
 	/// </summary>
 	public class GameManager : MonoBehaviour {
-		[SerializeField] private NotificationManager notificationManager;
+		[Header("Managers")]
+		[SerializeField] protected NotificationManager notificationManager;
+		[SerializeField] protected LevelManager levelManager;
+		[SerializeField] protected UIManager uiManager;
+
+		private float maxCellProbability;
+
+		[Header("Complete Mess")]
 
 		[SerializeField] private float speed = 10;
 
 		[SerializeField] private float spawnFrequency = 0.25f;
-
-		[SerializeField] private int numberOfRow = 8;
-
-		[SerializeField] private int numberOfColumn = 7;
 
 		[SerializeField]
 		private int nTurnToUpgradeMaxCellCount = 1;
@@ -70,25 +75,6 @@ namespace BloodyBalls.Managers {
 
 		[SerializeField] private AddCoin addCoinPrefab;
 
-		[SerializeField]
-		private BoxCollider2D leftWall;
-
-		[SerializeField]
-		private BoxCollider2D rightWall;
-
-		[SerializeField]
-		private BoxCollider2D bottomWall;
-
-		[SerializeField]
-		private BoxCollider2D topWall;
-
-
-		[SerializeField]
-		private Transform background;
-
-
-		[SerializeField] private UIManager uiManager;
-
 		[SerializeField] private Player player;
 
 
@@ -101,11 +87,6 @@ namespace BloodyBalls.Managers {
 
 		public List<Transform> spawnedCells;
 
-		private float stepX;
-		private float maxCellProbability;
-		private Transform gridContainer;
-		private Vector3 bottomLimit;
-
 		private int nTurn = 0;
 		private int ballToAddCount = 0;
 
@@ -114,24 +95,32 @@ namespace BloodyBalls.Managers {
 				throw new System.Exception("Cell Prefabs and Probabilities don't have the same length !");
 			}
 
-			SubscribeToUIManager();
+			SubscribeToUIManagerActions();
 
-			SetUpScreen();
-
-			SetUpGrid();
-
-			SetUpLevelBounds();
+			// Sets up the game aspects.
+			spawnedCells = new List<Transform>();
+			SetupProbabilities();
 
 			SetUpPlayer();
 		}
 
+		/// <summary>
+		/// Sets up the probabilities involved in the game.
+		/// </summary>
+		private void SetupProbabilities() {
+			for (int i = 0; i < brickProbabilities.Length; i++) {
+				maxCellProbability += brickProbabilities[i];
+			}
+
+			maxSpawnProbability = brickProbability + powerUpProbability + emptyProbabilty;
+		}
+
 		#region UI
-		void SubscribeToUIManager() {
+		void SubscribeToUIManagerActions() {
 			uiManager.PlayButtonClicked += OnPlayButtonClicked;
 			uiManager.MainMenuButtonClicked += OnMainMenuButtonClicked;
 			uiManager.ReplayButtonClicked += OnReplayButtonClicked;
 		}
-
 
 		void OnPlayButtonClicked() {
 			StartGame();
@@ -159,32 +148,13 @@ namespace BloodyBalls.Managers {
 			currentMinCellCount = startMinCellCount;
 			currentMaxCellCount = startMinCellCount;
 			StartPlayer();
-			NextTurn();
-		}
-
-		void SetUpGrid() {
-			//stepX = screenRect.width / ((numberOfColumn+2) + (numberOfColumn + 4) * distanceBetweenCellsCoeff);
-			//float startOffset = (stepX / 2) * (1 + distanceBetweenCellsCoeff);
-
-			stepX = Mathf.Min(screenRect.width, screenRect.height) / (numberOfColumn + 2);
-			//stepX = screenRect.width / (numberOfColumn+2);
-			float startOffset = stepX / 2;
-
-			gridContainer = new GameObject("Grid").transform;
-			spawnedCells = new List<Transform>();
-
-			for (int i = 0; i < brickProbabilities.Length; i++) {
-				maxCellProbability += brickProbabilities[i];
-			}
-
-			maxSpawnProbability = brickProbability + powerUpProbability + emptyProbabilty;
-			bottomLimit = new Vector3(0, gridContainer.position.y - (numberOfColumn + 1.5f) * stepX, 0);
+			NextLevel();
 		}
 
 		private void CreateLine() {
 			float random;
 			float probability;
-			for (int x = 0; x < numberOfColumn; x++) {
+			for (int x = 0; x < uiManager.CellColumns; x++) {
 				probability = brickProbability;
 				random = Random.Range(0, maxSpawnProbability);
 				if (random < probability) {
@@ -202,7 +172,7 @@ namespace BloodyBalls.Managers {
 		private void MoveGrid() {
 			Vector3 endPosition;
 			foreach (Transform gridCell in spawnedCells) {
-				endPosition = gridCell.position - Vector3.up * stepX;
+				endPosition = gridCell.position - Vector3.up * uiManager.CellStepX;
 				gridCell.DOMove(gridCell.position, endPosition, 0.5f);
 
 				Cell cell = gridCell.GetComponent<Cell>();
@@ -212,9 +182,24 @@ namespace BloodyBalls.Managers {
 			}
 		}
 
+		/// <summary>
+		/// Starts a new turn and increases the difficulty.
+		/// </summary>
 		private void NextTurn() {
 			uiManager.SetHUDCurrentScore(nTurn);
 			StartCoroutine(NextTurnCoroutine());
+		}
+
+		/// <summary>
+		/// Goes to the next "level" in the game.
+		/// </summary>
+		private void NextLevel() {
+			// Setup a new level.
+			levelManager.GoToNextLevel();
+
+			// Go to the next turn and display a little message.
+			NextTurn();
+			notificationManager.Notify(levelManager.CurrentLevelType.GetRandomMessage());
 		}
 
 		/// <summary>
@@ -298,9 +283,6 @@ namespace BloodyBalls.Managers {
 				player.StartTurn();
 
 			}
-
-			// TODO: Move this to a "level manager"
-			notificationManager.Notify("O colesterol é responsável por cerca de um terço de todas as doenças cardiovasculares no mundo.\n\n<b>Tome cuidado com este nível, e o seu colesterol!</b>");
 		}
 
 		private void GameOver() {
@@ -348,7 +330,7 @@ namespace BloodyBalls.Managers {
 
 
 				int layerMask = ~((1 << 9) | (1 << 10));
-				RaycastHit2D hit = Physics2D.Raycast(startPosition, -Vector3.up, stepX * 2.25f, layerMask);
+				RaycastHit2D hit = Physics2D.Raycast(startPosition, -Vector3.up, uiManager.CellStepX * 2.25f, layerMask);
 				if (!hit)
 					return false;
 
@@ -357,8 +339,20 @@ namespace BloodyBalls.Managers {
 			return false;
 		}
 
+		/// <summary>
+		/// Event that's fired whenever a turn has ended.
+		/// </summary>
 		private void OnTurnEnded() {
+			// Increase the turn counter.
 			nTurn++;
+
+			// Check if it's time to go to the next level.
+			if ((nTurn % levelManager.TurnsBeforeLevelSwitch) == 0) {
+				NextLevel();
+				return;
+			}
+
+			// Just go to the next turn.
 			NextTurn();
 		}
 
@@ -377,9 +371,9 @@ namespace BloodyBalls.Managers {
 				powerupTransform = addCoin.transform;
 			}
 
-			powerupTransform.SetParent(gridContainer);
+			powerupTransform.SetParent(uiManager.GridContainer);
 			powerupTransform.localPosition = GetPositionFromModel(x, y);
-			powerupTransform.localScale *= stepX;
+			powerupTransform.localScale *= uiManager.CellStepX;
 			//spawnedCells.Add(powerupTransform);
 			spawnedCells.Insert(0, powerupTransform);
 		}
@@ -408,9 +402,9 @@ namespace BloodyBalls.Managers {
 					break;
 				}
 			}
-			cell.transform.SetParent(gridContainer);
+			cell.transform.SetParent(uiManager.GridContainer);
 			cell.gameObject.name += "_" + x.ToString();
-			cell.transform.localScale *= stepX;
+			cell.transform.localScale *= uiManager.CellStepX;
 			cell.transform.localPosition = GetPositionFromModel(x, y);
 			cell.gridX = x;
 			cell.gridY = y;
@@ -434,16 +428,16 @@ namespace BloodyBalls.Managers {
 
 		Vector3 GetPositionFromModel(int x, int y) {
 			//Vector3 position = new Vector3 (stepX + x * (stepX + distanceBetweenCellsCoeff), -y * (stepX + distanceBetweenCellsCoeff), 0);
-			Vector3 position = new Vector3(stepX + x * stepX, -y * stepX, 0);
+			Vector3 position = new Vector3(uiManager.CellStepX + x * uiManager.CellStepX, -y * uiManager.CellStepX, 0);
 			return position;
 
 		}
 
 		void SetUpPlayer() {
-			player.transform.localScale *= stepX;
+			player.transform.localScale *= uiManager.CellStepX;
 			player.Speed = speed;
 			player.SpawnFrequency = spawnFrequency;
-			player.BallScale = stepX;
+			player.BallScale = uiManager.CellStepX;
 			player.ScreenRect = screenRect;
 
 			player.SetUpTrajectoryDots();
@@ -454,60 +448,10 @@ namespace BloodyBalls.Managers {
 		}
 
 		void StartPlayer() {
-			player.transform.position = bottomLimit;
+			player.transform.position = uiManager.PlayFieldBottom;
 			player.SetUpBalls();
 
 			DisplayPlayer(true);
-		}
-
-		void SetUpScreen() {
-			screenRect = CameraTools.GetScreenRect();
-		}
-
-		void SetUpLevelBounds() {
-			Camera cam = Camera.main;
-			float height = 2f * cam.orthographicSize;
-			float width = height * cam.aspect;
-
-			float gridHeight = (numberOfRow + 1) * stepX;
-			float remainingSpace = height - gridHeight;
-			float topBorderHeight = remainingSpace * 0.5f;
-			float bottomBorderHeight = remainingSpace * 0.5f;
-
-			float startOffset = stepX / 2;
-			gridContainer.position = new Vector3(screenRect.xMin + startOffset, screenRect.yMax - startOffset - topBorderHeight);
-
-			bottomLimit = new Vector3(0, screenRect.yMin + bottomBorderHeight, 0);
-
-
-			Vector2 boxWidth = new Vector2(screenRect.width + 1f, 0.1f);
-			Vector2 boxHeight = new Vector2(0.1f, screenRect.height + 1f);
-
-			topWall.transform.position = new Vector3(0, screenRect.yMax - topBorderHeight, 0);
-			topWall.size = boxWidth;
-
-			bottomWall.transform.position = bottomLimit - 0.125f * stepX * Vector3.up;
-			bottomWall.size = boxWidth;
-
-			leftWall.transform.position = new Vector3(screenRect.xMin, 0, 0);
-
-			leftWall.size = boxHeight;
-
-			rightWall.transform.position = new Vector3(screenRect.xMax, 0, 0);
-			rightWall.size = boxHeight;
-
-
-			//background.localScale = new Vector3 (screenRect.width + 0.6f, gridHeight + 0.6f, 0);
-			background.localScale = new Vector3(Mathf.Min(screenRect.width, screenRect.height) + 0.6f, gridHeight + 0.6f, 0);
-
-
-			background.transform.position = (topWall.transform.position + bottomWall.transform.position) / 2;
-
-			leftWall.transform.position = new Vector3(-background.localScale.x / 2 + startOffset, 0, 0);
-			rightWall.transform.position = new Vector3(background.localScale.x / 2 - startOffset, 0, 0);
-
-			gridContainer.position = new Vector3(-background.localScale.x / 2 + startOffset, screenRect.yMax - startOffset - topBorderHeight);
-
 		}
 
 		/// <summary>
