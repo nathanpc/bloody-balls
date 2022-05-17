@@ -196,7 +196,7 @@ GameObject:
   - component: {fileID: 80453609}
   - component: {fileID: 80453608}
   m_Layer: 5
-  m_Name: Titlecard
+  m_Name: Game Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -273,7 +273,6 @@ GameObject:
   - component: {fileID: 103139491}
   - component: {fileID: 103139490}
   - component: {fileID: 103139489}
-  - component: {fileID: 103139493}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -356,36 +355,15 @@ RectTransform:
   - {fileID: 80453607}
   - {fileID: 1618691949}
   - {fileID: 1293795399}
-  - {fileID: 1886123701}
   - {fileID: 1059404663}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &103139493
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 103139488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9fc10ff3b5614d7aa5a87043fad9988, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  titlecard: {fileID: 80453607}
-  gameOver: {fileID: 1618691949}
-  hud: {fileID: 1293795399}
-  gameOverCurrentScore: {fileID: 2085798770}
-  gameOverBestScore: {fileID: 225327335}
-  hudCurrentScore: {fileID: 2083853683}
-  hudBestScore: {fileID: 1236812299}
-  hudCoins: {fileID: 1468854219}
 --- !u!1001 &170811385
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -399,7 +377,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 437040, guid: bcd3d435423fe4c049fc85e9bcfe212a, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 437040, guid: bcd3d435423fe4c049fc85e9bcfe212a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -490,7 +468,7 @@ GameObject:
   - component: {fileID: 225327336}
   - component: {fileID: 225327335}
   m_Layer: 5
-  m_Name: BestScore
+  m_Name: Best Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -587,8 +565,10 @@ Transform:
   - {fileID: 1848867144}
   - {fileID: 2053240550}
   - {fileID: 221737250}
+  - {fileID: 1354933729}
+  - {fileID: 1856828183}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &326720004 stripped
 BoxCollider2D:
@@ -888,7 +868,7 @@ GameObject:
   - component: {fileID: 744298409}
   - component: {fileID: 744298408}
   m_Layer: 5
-  m_Name: PlayButton
+  m_Name: Play Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -958,8 +938,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 103139493}
-        m_TargetAssemblyTypeName: 
+      - m_Target: {fileID: 1856828184}
+        m_TargetAssemblyTypeName: BloodyBalls.Managers.UIManager, Assembly-CSharp
         m_MethodName: OnPlayButton
         m_Mode: 1
         m_Arguments:
@@ -1014,6 +994,123 @@ BoxCollider2D:
     type: 3}
   m_PrefabInstance: {fileID: 1746093112}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &945342066
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 945342067}
+  - component: {fileID: 945342068}
+  m_Layer: 0
+  m_Name: Screen Background
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &945342067
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945342066}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 986533159}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &945342068
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945342066}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: -1
+  m_Sprite: {fileID: 21300000, guid: 0fdc975b84b534dcabb996b045cf24e0, type: 3}
+  m_Color: {r: 0.9056604, g: 0.9056604, b: 0.9056604, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!1 &986533158
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 986533159}
+  m_Layer: 0
+  m_Name: Play Field
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &986533159
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 986533158}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1961690954}
+  - {fileID: 945342067}
+  - {fileID: 1672949598}
+  - {fileID: 1147685827}
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1059404662
 GameObject:
   m_ObjectHideFlags: 0
@@ -1045,7 +1142,7 @@ RectTransform:
   m_Children:
   - {fileID: 1311436042}
   m_Father: {fileID: 103139492}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1169,6 +1266,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1089396065}
   m_CullTransparentMesh: 1
+--- !u!1 &1147685826
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1147685827}
+  m_Layer: 0
+  m_Name: Grid Container
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1147685827
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147685826}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 986533159}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1170720763
 GameObject:
   m_ObjectHideFlags: 0
@@ -1182,7 +1309,7 @@ GameObject:
   - component: {fileID: 1170720766}
   - component: {fileID: 1170720765}
   m_Layer: 5
-  m_Name: ReplayButton
+  m_Name: Replay Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1252,8 +1379,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 103139493}
-        m_TargetAssemblyTypeName: 
+      - m_Target: {fileID: 1856828184}
+        m_TargetAssemblyTypeName: BloodyBalls.Managers.UIManager, Assembly-CSharp
         m_MethodName: OnReplayButton
         m_Mode: 1
         m_Arguments:
@@ -1661,6 +1788,93 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1311436041}
   m_CullTransparentMesh: 1
+--- !u!1 &1354933728
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1354933729}
+  - component: {fileID: 1354933731}
+  - component: {fileID: 1354933730}
+  - component: {fileID: 1354933732}
+  m_Layer: 0
+  m_Name: Level Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1354933729
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354933728}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 274085277}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1354933730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354933728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d91681df033c9584ea7c6ea979b89da5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: Cholesterol
+  _screenColor: {r: 0.21698111, g: 0.1371169, b: 0.09942531, a: 1}
+  _fieldColor: {r: 0.4339623, g: 0.30460852, b: 0, a: 0.92156863}
+  _messages:
+  - "O colesterol \xE9 respons\xE1vel por cerca de um ter\xE7o de todas as doen\xE7as
+    cardiovasculares no mundo.\\n\\n<b>Tome cuidado com este n\xEDvel, e o seu colesterol!</b>"
+  - Outra coisa sobre colesterol.
+  - Mais colesterol.
+--- !u!114 &1354933731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354933728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f43ee0523017ff84db6a4fe17700ac95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _turnsBeforeLevelSwitch: 10
+  screenBackground: {fileID: 945342066}
+  randomSeed: 123456789
+--- !u!114 &1354933732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354933728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d91681df033c9584ea7c6ea979b89da5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: Diabetes
+  _screenColor: {r: 0.10834737, g: 0.10069672, b: 0.18867922, a: 1}
+  _fieldColor: {r: 0, g: 0.16978364, b: 0.31132078, a: 0.92156863}
+  _messages:
+  - Diabetes = ruim
+  - Mais diabatees.
+  - Cuidado com a diabetes.
 --- !u!114 &1432835079 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 11418666, guid: bcd3d435423fe4c049fc85e9bcfe212a,
@@ -1766,7 +1980,7 @@ GameObject:
   - component: {fileID: 1504998174}
   - component: {fileID: 1504998173}
   m_Layer: 5
-  m_Name: MainMenuButton
+  m_Name: Main Menu Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1836,8 +2050,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 103139493}
-        m_TargetAssemblyTypeName: 
+      - m_Target: {fileID: 1856828184}
+        m_TargetAssemblyTypeName: BloodyBalls.Managers.UIManager, Assembly-CSharp
         m_MethodName: OnMainMenuButton
         m_Mode: 1
         m_Arguments:
@@ -1978,7 +2192,7 @@ GameObject:
   - component: {fileID: 1618691949}
   - component: {fileID: 1618691950}
   m_Layer: 5
-  m_Name: GameOver
+  m_Name: Game Over
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2015,13 +2229,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1618691948}
   m_CullTransparentMesh: 1
+--- !u!4 &1672949598 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 434616, guid: a524fd9eba5b94fc78bca16352d9000f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1746093112}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1746093112
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 986533159}
     m_Modifications:
+    - target: {fileID: 107526, guid: a524fd9eba5b94fc78bca16352d9000f, type: 3}
+      propertyPath: m_Name
+      value: Level Bounds
+      objectReference: {fileID: 0}
     - target: {fileID: 173264, guid: a524fd9eba5b94fc78bca16352d9000f, type: 3}
       propertyPath: m_TagString
       value: Floor
@@ -2048,15 +2272,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 434616, guid: a524fd9eba5b94fc78bca16352d9000f, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 434616, guid: a524fd9eba5b94fc78bca16352d9000f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 434616, guid: a524fd9eba5b94fc78bca16352d9000f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 496878, guid: a524fd9eba5b94fc78bca16352d9000f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2311,7 +2535,7 @@ GameObject:
   - component: {fileID: 1848867143}
   - component: {fileID: 1848867145}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: Game Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2329,10 +2553,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 800b83bce042d46ca90a0e04fedea3bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  notificationManager: {fileID: 221737251}
+  levelManager: {fileID: 1354933731}
+  uiManager: {fileID: 1856828184}
   speed: 7
   spawnFrequency: 0.1
-  numberOfRow: 8
-  numberOfColumn: 7
   nTurnToUpgradeMaxCellCount: 1
   upgradeMaxCellCount: 1
   nTurnToUpgradeMinCellCount: 5
@@ -2364,12 +2589,6 @@ MonoBehaviour:
   - 1
   addBallPrefab: {fileID: 11491322, guid: ae778df3a781040a8b339ad494059bc3, type: 3}
   addCoinPrefab: {fileID: 11463720, guid: e862eee8af59c4ef1851ab983a4090f7, type: 3}
-  leftWall: {fileID: 2105055296}
-  rightWall: {fileID: 915269322}
-  bottomWall: {fileID: 326720004}
-  topWall: {fileID: 1542580097}
-  background: {fileID: 1961690954}
-  uiManager: {fileID: 103139493}
   player: {fileID: 1432835079}
   source: {fileID: 1848867145}
   gameOver: {fileID: 8300000, guid: ec9fc0cd92a4740bb8b6b87a84aae72a, type: 3}
@@ -2484,6 +2703,66 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!1 &1856828182
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1856828183}
+  - component: {fileID: 1856828184}
+  m_Layer: 0
+  m_Name: UI Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1856828183
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856828182}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 274085277}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1856828184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856828182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9fc10ff3b5614d7aa5a87043fad9988, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenBackground: {fileID: 945342067}
+  fieldBackground: {fileID: 1961690954}
+  _gridContainer: {fileID: 1147685827}
+  leftWall: {fileID: 2105055296}
+  rightWall: {fileID: 915269322}
+  bottomWall: {fileID: 326720004}
+  topWall: {fileID: 1542580097}
+  _numberOfCellRows: 8
+  _numberOfCellColumns: 7
+  titlecard: {fileID: 80453607}
+  gameOver: {fileID: 1618691949}
+  hud: {fileID: 1293795399}
+  gameOverCurrentScore: {fileID: 2085798770}
+  gameOverBestScore: {fileID: 225327335}
+  hudCurrentScore: {fileID: 2083853683}
+  hudBestScore: {fileID: 1236812299}
+  hudCoins: {fileID: 1468854219}
 --- !u!1 &1886123698
 GameObject:
   m_ObjectHideFlags: 0
@@ -2544,11 +2823,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1886123698}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10368}
-  m_LocalScale: {x: 115.2, y: 115.2, z: 115.2}
+  m_LocalPosition: {x: 278, y: 494.24997, z: -10008.562}
+  m_LocalScale: {x: 111.20624, y: 111.20624, z: 111.20624}
   m_Children: []
-  m_Father: {fileID: 103139492}
-  m_RootOrder: 3
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1903878174
 GameObject:
@@ -2719,7 +2998,7 @@ GameObject:
   - component: {fileID: 1961690954}
   - component: {fileID: 1961690953}
   m_Layer: 0
-  m_Name: Background
+  m_Name: Play Area Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2784,12 +3063,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1961690952}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 986533159}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2025963262
 GameObject:
@@ -2881,7 +3160,7 @@ GameObject:
   - component: {fileID: 2053240550}
   - component: {fileID: 2053240551}
   m_Layer: 0
-  m_Name: InputManager
+  m_Name: Input Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3004,7 +3283,7 @@ GameObject:
   - component: {fileID: 2085798771}
   - component: {fileID: 2085798770}
   m_Layer: 5
-  m_Name: CurrentScore
+  m_Name: Current Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
