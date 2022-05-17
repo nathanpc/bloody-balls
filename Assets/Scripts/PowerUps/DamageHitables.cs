@@ -38,13 +38,19 @@ namespace BloodyBalls.PowerUps {
 				if (cell == null)
 					continue;
 
-				// Inflict damage.
-				for (int i = 0; i < damage; i++) {
-					// Make sure the object hasn't been destroyed already.
-					if (obj == null)
-						goto nextobj;
+				foreach (string name in afflictedCellNames) {
+					if (cell.cellName == name) {
+						// Inflict damage.
+						for (int i = 0; i < damage; i++) {
+							// Make sure the object hasn't been destroyed already.
+							if (obj == null)
+								goto nextobj;
 
-					cell.BallHit(null);
+							cell.BallHit(null);
+						}
+
+						goto nextobj;
+					}
 				}
 
 nextobj:
