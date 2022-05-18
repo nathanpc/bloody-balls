@@ -45,7 +45,12 @@ namespace BloodyBalls.Managers {
 		/// </summary>
 		/// <returns>Level type object.</returns>
 		protected LevelType GetNextLevel() {
-			return GetRandomLevel();
+			// Make sure we get a different level.
+			LevelType level = CurrentLevelType;
+			while (level == CurrentLevelType)
+				level = GetRandomLevel();
+
+			return level;
 		}
 
 		/// <summary>
