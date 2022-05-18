@@ -18,13 +18,13 @@ namespace BloodyBalls.Managers {
 		[SerializeField] protected LevelManager levelManager;
 		[SerializeField] protected UIManager uiManager;
 
+		[Header("Player")]
+		[SerializeField] protected float ballSpeed = 10;
+		[SerializeField] protected float ballSpawnFrequency = 0.25f;
+
 		private float maxCellProbability;
 
 		[Header("Complete Mess")]
-
-		[SerializeField] private float speed = 10;
-
-		[SerializeField] private float spawnFrequency = 0.25f;
 
 		[SerializeField]
 		private int nTurnToUpgradeMaxCellCount = 1;
@@ -75,8 +75,6 @@ namespace BloodyBalls.Managers {
 
 		[SerializeField] private AddCoin addCoinPrefab;
 
-		[SerializeField] private Player player;
-
 
 		[SerializeField] private AudioSource source;
 
@@ -100,8 +98,7 @@ namespace BloodyBalls.Managers {
 			// Sets up the game aspects.
 			spawnedCells = new List<Transform>();
 			SetupProbabilities();
-
-			SetUpPlayer();
+			SetupPlayer();
 		}
 
 		/// <summary>
@@ -275,12 +272,12 @@ namespace BloodyBalls.Managers {
 			} else {
 				yield return new WaitForSeconds(0.5f);
 				for (int i = 0; i < ballToAddCount; i++) {
-					player.AddBall();
+					uiManager.Player.AddBall();
 				}
 				ballToAddCount = 0;
 
 				//player.transform.position = new Vector3 (screenRect.xMax, player.transform.position.y, 0);	
-				player.StartTurn();
+				uiManager.Player.StartTurn();
 
 			}
 		}
@@ -293,7 +290,7 @@ namespace BloodyBalls.Managers {
 				spawnedCells.RemoveAt(i);
 			}
 
-			DisplayPlayer(false);
+			uiManager.Player.Hide();
 
 			Utils.SetBestScore(nTurn);
 			int bestScore = Utils.GetBestScore();
@@ -302,10 +299,6 @@ namespace BloodyBalls.Managers {
 			uiManager.SetGameOverBestScore(bestScore);
 			uiManager.SetGameOverCurrentScore(nTurn);
 			uiManager.DisplayGameOver(true);
-		}
-
-		private void DisplayPlayer(bool isShown) {
-			player.gameObject.SetActive(isShown);
 		}
 
 		private void UpgradeDifficulty() {
@@ -433,25 +426,21 @@ namespace BloodyBalls.Managers {
 
 		}
 
-		void SetUpPlayer() {
-			player.transform.localScale *= uiManager.CellStepX;
-			player.Speed = speed;
-			player.SpawnFrequency = spawnFrequency;
-			player.BallScale = uiManager.CellStepX;
-			player.ScreenRect = screenRect;
-
-			player.SetUpTrajectoryDots();
-
-			player.TurnEnded += OnTurnEnded;
-
-			//StartPlayer ();
+		/// <summary>
+		/// Sets up the player's parameters.
+		/// </summary>
+		void SetupPlayer() {
+			uiManager.Player.Speed = ballSpeed;
+			uiManager.Player.SpawnFrequency = ballSpawnFrequency;
+			uiManager.Player.TurnEnded += OnTurnEnded;
 		}
 
+		/// <summary>
+		/// Starts up a new player session.
+		/// </summary>
 		void StartPlayer() {
-			player.transform.position = uiManager.PlayFieldBottom;
-			player.SetUpBalls();
-
-			DisplayPlayer(true);
+			uiManager.Player.SetupBalls();
+			uiManager.Player.Show();
 		}
 
 		/// <summary>

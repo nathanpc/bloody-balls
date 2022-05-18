@@ -2558,8 +2558,8 @@ MonoBehaviour:
   notificationManager: {fileID: 221737251}
   levelManager: {fileID: 1354933731}
   uiManager: {fileID: 1856828184}
-  speed: 7
-  spawnFrequency: 0.1
+  ballSpeed: 10
+  ballSpawnFrequency: 0.25
   nTurnToUpgradeMaxCellCount: 1
   upgradeMaxCellCount: 1
   nTurnToUpgradeMinCellCount: 5
@@ -2591,7 +2591,6 @@ MonoBehaviour:
   - 1
   addBallPrefab: {fileID: 11491322, guid: ae778df3a781040a8b339ad494059bc3, type: 3}
   addCoinPrefab: {fileID: 11463720, guid: e862eee8af59c4ef1851ab983a4090f7, type: 3}
-  player: {fileID: 1432835079}
   source: {fileID: 1848867145}
   gameOver: {fileID: 8300000, guid: ec9fc0cd92a4740bb8b6b87a84aae72a, type: 3}
   spawnedCells: []
@@ -2757,6 +2756,7 @@ MonoBehaviour:
   topWall: {fileID: 1542580097}
   _numberOfCellRows: 8
   _numberOfCellColumns: 7
+  _playerObject: {fileID: 1432835079}
   titlecard: {fileID: 80453607}
   gameOver: {fileID: 1618691949}
   hud: {fileID: 1293795399}

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using BloodyBalls.Utilities;
+using BloodyBalls.Controls;
 
 namespace BloodyBalls.Managers {
 	/// <summary>
@@ -24,6 +25,9 @@ namespace BloodyBalls.Managers {
 		[Header("Cells Grid")]
 		[SerializeField] private int _numberOfCellRows = 8;
 		[SerializeField] private int _numberOfCellColumns = 7;
+
+		[Header("Player")]
+		[SerializeField] private Player _playerObject;
 
 		private float _cellStepX;
 		private Vector3 _playFieldBottom;
@@ -68,12 +72,13 @@ namespace BloodyBalls.Managers {
 		private void SetupUIElements() {
 			SetupCellGrid();
 			SetupPlayFieldBounds();
+			SetupPlayerPosition();
 		}
 
 		/// <summary>
 		/// Sets up the cells grid.
 		/// </summary>
-		void SetupCellGrid() {
+		private void SetupCellGrid() {
 			Rect screenRect = CameraUtils.GetScreenRect();
 
 			// Calculate the step size between cell columns.
@@ -86,7 +91,7 @@ namespace BloodyBalls.Managers {
 		/// <summary>
 		/// Sets up the play field bounds.
 		/// </summary>
-		void SetupPlayFieldBounds() {
+		private void SetupPlayFieldBounds() {
 			// Get some camera/screen dimensions.
 			Camera cam = Camera.main;
 			float height = 2f * cam.orthographicSize;
@@ -127,6 +132,20 @@ namespace BloodyBalls.Managers {
 			// Position the grid container.
 			GridContainer.position = new Vector3(-fieldBackground.localScale.x / 2 + startOffset,
 				screenRect.yMax - startOffset - topBorderHeight);
+		}
+
+		/// <summary>
+		/// Sets up the player-related objects.
+		/// </summary>
+		private void SetupPlayerPosition() {
+			// Setup various position attributes.
+			Player.transform.localScale *= CellStepX;
+			Player.BallScale = CellStepX;
+			Player.ScreenRect = CameraUtils.GetScreenRect();
+			Player.transform.position = PlayFieldBottom;
+
+			// Create the trajectory dots for the player to orient themselves.
+			Player.SetUpTrajectoryDots();
 		}
 
 		public void DisplayTitlecard(bool isShown) {
@@ -216,6 +235,14 @@ namespace BloodyBalls.Managers {
 		public int CellColumns {
 			get { return _numberOfCellColumns; }
 			set { _numberOfCellColumns = value; }
+		}
+
+		/// <summary>
+		/// Player object.
+		/// </summary>
+		public Player Player {
+			get { return _playerObject; }
+			set { _playerObject = value; }
 		}
 	}
 }
