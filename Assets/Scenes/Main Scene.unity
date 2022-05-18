@@ -1839,8 +1839,8 @@ MonoBehaviour:
   _messages:
   - "O colesterol \xE9 respons\xE1vel por cerca de um ter\xE7o de todas as doen\xE7as
     cardiovasculares no mundo.\\n\\n<b>Tome cuidado com este n\xEDvel, e o seu colesterol!</b>"
-  - Outra coisa sobre colesterol.
-  - Mais colesterol.
+  - "Estima-se que o colesterol cause 18% do total das doen\xE7as cerebrovasculares."
+  - "Estima-se que o colesterol cause cerca de 4,4 milh\xF5es de mortes por ano."
 --- !u!114 &1354933731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1872,9 +1872,11 @@ MonoBehaviour:
   _screenColor: {r: 0.10834737, g: 0.10069672, b: 0.18867922, a: 1}
   _fieldColor: {r: 0, g: 0.16978364, b: 0.31132078, a: 0.92156863}
   _messages:
-  - Diabetes = ruim
-  - Mais diabatees.
-  - Cuidado com a diabetes.
+  - "Em 2010, cerca de 34,9% da popula\xE7\xE3o portuguesa entre os 20 e os 79 anos
+    apresentava diabetes ou pr\xE9-diabetes e cerca de 43,6% dos casos n\xE3o estavam
+    diagnosticados."
+  - "Muitas vezes, o cuidado com a alimenta\xE7\xE3o e a pr\xE1tica regular de exerc\xEDcio
+    s\xE3o suficientes para evitar a diabetes ou para a manter controlada."
 --- !u!114 &1432835079 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 11418666, guid: bcd3d435423fe4c049fc85e9bcfe212a,
