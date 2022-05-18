@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using BloodyBalls.Utilities;
+using BloodyBalls.Cells;
 
 namespace BloodyBalls.Levels {
 	/// <summary>
@@ -15,6 +16,10 @@ namespace BloodyBalls.Levels {
 		[Header("Colorscheme")]
 		[SerializeField] private Color _screenColor;
 		[SerializeField] private Color _fieldColor;
+
+		[Header("Cells")]
+		[SerializeField] private Cell[] _cellPrefabs;
+		[SerializeField] private float[] _cellProbabilities;
 
 		[Header("Notifications")]
 		[SerializeField] private Color _notificationBoxColor;
@@ -102,6 +107,22 @@ namespace BloodyBalls.Levels {
 		public Color NotificationTextColor {
 			get { return _notificationTextColor; }
 			set { _notificationTextColor = value; }
+		}
+
+		/// <summary>
+		/// Cell prefabs for this level.
+		/// </summary>
+		public Cell[] Cells {
+			get { return _cellPrefabs; }
+			set { _cellPrefabs = value; }
+		}
+
+		/// <summary>
+		/// What probabilities of this cell spawning?
+		/// </summary>
+		public float[] CellProbabilities {
+			get { return _cellProbabilities; }
+			set { _cellProbabilities = value; }
 		}
 	}
 }

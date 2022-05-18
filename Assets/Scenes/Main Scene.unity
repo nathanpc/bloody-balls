@@ -2553,6 +2553,14 @@ MonoBehaviour:
   _name: Cholesterol
   _screenColor: {r: 0.21698111, g: 0.1371169, b: 0.09942531, a: 1}
   _fieldColor: {r: 0.4339623, g: 0.30460852, b: 0, a: 0.92156863}
+  _cellPrefabs:
+  - {fileID: 11490368, guid: 06cc759e00962af4896783e804ffdd75, type: 3}
+  - {fileID: 11490368, guid: c4c8282306bda644f803a4d565676c67, type: 3}
+  - {fileID: 11490368, guid: 64dfeb2bea0103c4b9845cc042b545e0, type: 3}
+  _cellProbabilities:
+  - 15
+  - 5
+  - 3
   _notificationBoxColor: {r: 1, g: 0.7426736, b: 0.17520213, a: 0.92156863}
   _notificationTextColor: {r: 0.13207549, g: 0.13207549, b: 0.13207549, a: 1}
   _messages:
@@ -2591,6 +2599,10 @@ MonoBehaviour:
   _name: Diabetes
   _screenColor: {r: 0.10834737, g: 0.10069672, b: 0.18867922, a: 1}
   _fieldColor: {r: 0, g: 0.16978364, b: 0.31132078, a: 0.92156863}
+  _cellPrefabs:
+  - {fileID: 11490368, guid: 65776fb70aa2444179205881bbd5cab0, type: 3}
+  _cellProbabilities:
+  - 10
   _notificationBoxColor: {r: 0, g: 0.465518, b: 1, a: 0.92156863}
   _notificationTextColor: {r: 0.13333334, g: 0.13333334, b: 0.13333334, a: 1}
   _messages:
@@ -3735,16 +3747,8 @@ MonoBehaviour:
   powerUpProbability: 1
   emptyProbabilty: 4
   addBallProbability: 0.75
-  brickPrefabs:
-  - {fileID: 11490368, guid: 06cc759e00962af4896783e804ffdd75, type: 3}
-  - {fileID: 11490368, guid: c4c8282306bda644f803a4d565676c67, type: 3}
-  - {fileID: 11490368, guid: 64dfeb2bea0103c4b9845cc042b545e0, type: 3}
-  - {fileID: 11496346, guid: 790055999931449429df731175f1671d, type: 3}
-  brickProbabilities:
-  - 15
-  - 5
-  - 3
-  - 1
+  brickPrefabs: []
+  brickProbabilities: []
   addBallPrefab: {fileID: 11491322, guid: ae778df3a781040a8b339ad494059bc3, type: 3}
   addCoinPrefab: {fileID: 11463720, guid: e862eee8af59c4ef1851ab983a4090f7, type: 3}
   source: {fileID: 1848867145}

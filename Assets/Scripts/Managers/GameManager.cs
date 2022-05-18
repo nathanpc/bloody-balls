@@ -185,10 +185,12 @@ namespace BloodyBalls.Managers {
 		/// </summary>
 		/// <param name="showNotification">Show a litle notification related to this level?</param>
 		public void NextTurn(bool showNotification) {
+			// Do visual stuff.
 			quizManager.Hide();
 			uiManager.SetHUDCurrentScore(nTurn);
 			StartCoroutine(NextTurnCoroutine());
 
+			// Should we show an annoying notification?
 			if (showNotification)
 				notificationManager.Notify(levelManager.CurrentLevelType.GetRandomMessage());
 		}
@@ -201,6 +203,8 @@ namespace BloodyBalls.Managers {
 			// Setup a new level.
 			levelManager.GoToNextLevel();
 			uiManager.ApplySkin(levelManager.CurrentLevelType);
+			brickPrefabs = levelManager.CurrentLevelType.Cells;
+			brickProbabilities = levelManager.CurrentLevelType.CellProbabilities;
 
 			// Should we destroy everything?
 			if (clearGrid) {
