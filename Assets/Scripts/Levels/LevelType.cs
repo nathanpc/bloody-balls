@@ -17,7 +17,13 @@ namespace BloodyBalls.Levels {
 		[SerializeField] private Color _fieldColor;
 
 		[Header("Notifications")]
+		[SerializeField] private Color _notificationBoxColor;
+		[SerializeField] private Color _notificationTextColor;
 		[SerializeField] private List<string> _messages;
+
+		[Header("Quiz")]
+		[SerializeField] protected GameObject quizQuestionsContainer;
+		protected Quiz[] quizzes;
 
 		protected System.Random random;
 
@@ -26,6 +32,9 @@ namespace BloodyBalls.Levels {
 			// Make sure we got messages.
 			if (_messages == null)
 				throw new System.Exception("At least a single message is needed for each level.");
+
+			// Get our quizzes.
+			quizzes = quizQuestionsContainer.GetComponents<Quiz>();
 
 			// Start our random number generator.
 			random = new System.Random();
@@ -37,6 +46,14 @@ namespace BloodyBalls.Levels {
 		/// <returns>Message to the player for this level.</returns>
 		public string GetRandomMessage() {
 			return Messages[random.Next(Messages.Count)];
+		}
+
+		/// <summary>
+		/// Gets a random quiz for this level.
+		/// </summary>
+		/// <returns>Quiz to present to the player.</returns>
+		public Quiz GetRandomQuiz() {
+			return quizzes[random.Next(quizzes.Length)];
 		}
 
 		/// <summary>
@@ -69,6 +86,22 @@ namespace BloodyBalls.Levels {
 		public List<string> Messages {
 			get { return _messages; }
 			set { _messages = value; }
+		}
+
+		/// <summary>
+		/// Background color of the notification box.
+		/// </summary>
+		public Color NotificationBoxColor {
+			get { return _notificationBoxColor; }
+			set { _notificationBoxColor = value; }
+		}
+
+		/// <summary>
+		/// Color of the notification box text.
+		/// </summary>
+		public Color NotificationTextColor {
+			get { return _notificationTextColor; }
+			set { _notificationTextColor = value; }
 		}
 	}
 }

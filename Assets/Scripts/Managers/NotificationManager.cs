@@ -26,7 +26,8 @@ namespace BloodyBalls.Managers {
 			shownPosition = notificationBox.position;
 
 			Rect rect = notificationBox.rect;
-			shownPosition.y -= rect.height;
+			hiddenPosition.y += rect.height;
+			notificationBox.position = hiddenPosition;
 		}
 
 		/// <summary>

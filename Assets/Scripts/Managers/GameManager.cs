@@ -17,6 +17,7 @@ namespace BloodyBalls.Managers {
 		[SerializeField] protected NotificationManager notificationManager;
 		[SerializeField] protected LevelManager levelManager;
 		[SerializeField] protected UIManager uiManager;
+		[SerializeField] protected PopupQuizManager quizManager;
 
 		[Header("Player")]
 		[SerializeField] protected float ballSpeed = 10;
@@ -89,10 +90,10 @@ namespace BloodyBalls.Managers {
 		private int ballToAddCount = 0;
 
 		void Start() {
-			if (brickPrefabs.Length != brickProbabilities.Length) {
-				throw new System.Exception("Cell Prefabs and Probabilities don't have the same length !");
-			}
+			if (brickPrefabs.Length != brickProbabilities.Length)
+				throw new System.Exception("Cell Prefabs and Probabilities don't have the same length!");
 
+			// Setup some event stuff.
 			SubscribeToUIManagerActions();
 
 			// Sets up the game aspects.
@@ -145,7 +146,7 @@ namespace BloodyBalls.Managers {
 			currentMinCellCount = startMinCellCount;
 			currentMaxCellCount = startMinCellCount;
 			StartPlayer();
-			NextLevel();
+			NextLevel(false);
 		}
 
 		private void CreateLine() {
@@ -182,22 +183,43 @@ namespace BloodyBalls.Managers {
 		/// <summary>
 		/// Starts a new turn and increases the difficulty.
 		/// </summary>
-		private void NextTurn() {
+		/// <param name="showNotification">Show a litle notification related to this level?</param>
+		public void NextTurn(bool showNotification) {
+			quizManager.Hide();
 			uiManager.SetHUDCurrentScore(nTurn);
 			StartCoroutine(NextTurnCoroutine());
+
+			if (showNotification)
+				notificationManager.Notify(levelManager.CurrentLevelType.GetRandomMessage());
 		}
 
 		/// <summary>
 		/// Goes to the next "level" in the game.
 		/// </summary>
-		private void NextLevel() {
+		/// <param name="clearGrid">Clear the cell grid?</param>
+		public void NextLevel(bool clearGrid) {
 			// Setup a new level.
 			levelManager.GoToNextLevel();
 			uiManager.ApplySkin(levelManager.CurrentLevelType);
 
+			// Should we destroy everything?
+			if (clearGrid) {
+				for (int i = (spawnedCells.Count - 1); i > 0; i--) {
+					// Destroy a simple cell.
+					Cell cell = spawnedCells[i].GetComponent<Cell>();
+					if (cell != null) {
+						cell.Kill();
+						continue;
+					}
+
+					// Destroy a "power-up".
+					Destroy(spawnedCells[i].gameObject);
+					spawnedCells.RemoveAt(i);
+				}
+			}
+
 			// Go to the next turn and display a little message.
-			NextTurn();
-			notificationManager.Notify(levelManager.CurrentLevelType.GetRandomMessage());
+			NextTurn(true);
 		}
 
 		/// <summary>
@@ -321,8 +343,6 @@ namespace BloodyBalls.Managers {
 					continue;
 
 				Vector3 startPosition = spawnedCells[i].position;
-
-
 				int layerMask = ~((1 << 9) | (1 << 10));
 				RaycastHit2D hit = Physics2D.Raycast(startPosition, -Vector3.up, uiManager.CellStepX * 2.25f, layerMask);
 				if (!hit)
@@ -330,6 +350,7 @@ namespace BloodyBalls.Managers {
 
 				return hit.collider.CompareTag(Constants.FLOOR_TAG);
 			}
+
 			return false;
 		}
 
@@ -342,12 +363,12 @@ namespace BloodyBalls.Managers {
 
 			// Check if it's time to go to the next level.
 			if ((nTurn % levelManager.TurnsBeforeLevelSwitch) == 0) {
-				NextLevel();
+				quizManager.Open(levelManager.CurrentLevelType.GetRandomQuiz());
 				return;
 			}
 
 			// Just go to the next turn.
-			NextTurn();
+			NextTurn(false);
 		}
 
 		private void CreatePowerUp(int x, int y) {
@@ -426,7 +447,7 @@ namespace BloodyBalls.Managers {
 			return position;
 
 		}
-
+		
 		/// <summary>
 		/// Sets up the player's parameters.
 		/// </summary>

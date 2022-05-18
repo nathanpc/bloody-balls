@@ -30,6 +30,10 @@ namespace BloodyBalls.Managers {
 		[Header("Player")]
 		[SerializeField] private Player _playerObject;
 
+		[Header("Notifications")]
+		[SerializeField] protected Image notificationBox;
+		[SerializeField] protected Text notificationText;
+
 		private float _cellStepX;
 		private Vector3 _playFieldBottom;
 
@@ -158,8 +162,13 @@ namespace BloodyBalls.Managers {
 		/// </summary>
 		/// <param name="level">Level type to get the skin from.</param>
 		public void ApplySkin(LevelType level) {
+			// Backgrounds.
 			screenBackground.GetComponent<SpriteRenderer>().color = level.BackgroundColor;
 			fieldBackground.GetComponent<SpriteRenderer>().color = level.FieldColor;
+
+			// Notifications.
+			notificationBox.color = level.NotificationBoxColor;
+			notificationText.color = level.NotificationTextColor;
 		}
 
 		public void DisplayTitlecard(bool isShown) {

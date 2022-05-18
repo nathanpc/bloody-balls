@@ -19,6 +19,7 @@ namespace BloodyBalls.Cells {
 		public int gridY = 0;
 
 		public int _count;
+
 		public int Count {
 			get {
 				return _count;
@@ -100,19 +101,32 @@ namespace BloodyBalls.Cells {
 			spriteRenderer.transform.localScale = startScale;
 		}
 
+		/// <summary>
+		/// Handles being hit by the ball.
+		/// </summary>
+		/// <param name="ball">Ball that hit us.</param>
 		public void BallHit(Ball ball) {
-			//Count--;
+			// Make visual and internal changes.
 			_count--;
 			number.text = _count.ToString();
 			Color = GetColorFromCount(_count);
 			StartCoroutine(DOPunchScaleCoroutine(0.1f, 0.1f));
 
-			if (Count <= 0) {
-				if (OnDestroyedByBall != null)
-					OnDestroyedByBall(this);
+			// We dead?
+			if (Count <= 0)
+				Kill();
+		}
 
-				Destroy(gameObject);
-			}
+		/// <summary>
+		/// Handles the destruction of the cell.
+		/// </summary>
+		public void Kill() {
+			// Trigger the destruction event.
+			if (OnDestroyedByBall != null)
+				OnDestroyedByBall(this);
+
+			// Actually destroy the cell.
+			Destroy(gameObject);
 		}
 	}
 }
