@@ -140,7 +140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &17737353
 RectTransform:
   m_ObjectHideFlags: 0
@@ -685,6 +685,7 @@ RectTransform:
   - {fileID: 1805665387}
   - {fileID: 1207807107}
   - {fileID: 695348699}
+  - {fileID: 1842383032}
   m_Father: {fileID: 1293795399}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -966,13 +967,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 695348698}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69765d771fbe4994aaf22ed979574530, type: 3}
+  m_Script: {fileID: 11500000, guid: 21cc6a02f84949c498b1de8ac58648a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tagName: Hitable
-  damage: 1
-  afflictedCells:
-  - {fileID: 11490368, guid: c4c8282306bda644f803a4d565676c67, type: 3}
+  amount: 3
+  player: {fileID: 1432835079}
 --- !u!114 &695348701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1018,7 +1017,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 695348700}
-        m_TargetAssemblyTypeName: BloodyBalls.PowerUps.DamageHitables, Assembly-CSharp
+        m_TargetAssemblyTypeName: BloodyBalls.PowerUps.ExtraBalls, Assembly-CSharp
         m_MethodName: Activate
         m_Mode: 1
         m_Arguments:
@@ -1049,7 +1048,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e484131d27830be479ac9f4218a2319c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: be2028889ae861d40932a490b6a2873f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2555,10 +2554,10 @@ MonoBehaviour:
   _fieldColor: {r: 0.4339623, g: 0.30460852, b: 0, a: 0.92156863}
   _cellPrefabs:
   - {fileID: 11490368, guid: 06cc759e00962af4896783e804ffdd75, type: 3}
-  - {fileID: 11490368, guid: c4c8282306bda644f803a4d565676c67, type: 3}
-  - {fileID: 11490368, guid: 64dfeb2bea0103c4b9845cc042b545e0, type: 3}
+  - {fileID: 11496346, guid: e47050c962f43d541b38ab8cf1311c21, type: 3}
+  - {fileID: 11496346, guid: bd3d38a817ea7d74b8375a9487da5f8f, type: 3}
   _cellProbabilities:
-  - 15
+  - 10
   - 5
   - 3
   _notificationBoxColor: {r: 1, g: 0.7426736, b: 0.17520213, a: 0.92156863}
@@ -2600,11 +2599,15 @@ MonoBehaviour:
   _screenColor: {r: 0.10834737, g: 0.10069672, b: 0.18867922, a: 1}
   _fieldColor: {r: 0, g: 0.16978364, b: 0.31132078, a: 0.92156863}
   _cellPrefabs:
-  - {fileID: 11490368, guid: 65776fb70aa2444179205881bbd5cab0, type: 3}
+  - {fileID: 11490368, guid: c4c8282306bda644f803a4d565676c67, type: 3}
+  - {fileID: 11496346, guid: 96273c6220755f848b1926c9e4ec64a9, type: 3}
+  - {fileID: 11490368, guid: 64dfeb2bea0103c4b9845cc042b545e0, type: 3}
   _cellProbabilities:
   - 10
+  - 8
+  - 3
   _notificationBoxColor: {r: 0, g: 0.465518, b: 1, a: 0.92156863}
-  _notificationTextColor: {r: 0.13333334, g: 0.13333334, b: 0.13333334, a: 1}
+  _notificationTextColor: {r: 0.8679245, g: 0.8679245, b: 0.8679245, a: 1}
   _messages:
   - "Em 2010, cerca de 34,9% da popula\xE7\xE3o portuguesa entre os 20 e os 79 anos
     apresentava diabetes ou pr\xE9-diabetes e cerca de 43,6% dos casos n\xE3o estavam
@@ -3233,6 +3236,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1742480405}
   - component: {fileID: 1742480406}
+  - component: {fileID: 1742480407}
+  - component: {fileID: 1742480408}
   m_Layer: 0
   m_Name: Cholesterol Quizzes
   m_TagString: Untagged
@@ -3266,13 +3271,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13fc6dbf70b3c83488201da9ad736698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _question: Some question here about cholesterol
+  _question: "O \"bom\" colesterol \xE9 chamado de colesterol ...?"
   _rightAnswerIndex: 0
   _answers:
-  - 1
-  - 2
-  - 3
-  - 4
+  - HDL
+  - LDL
+  - VHDL
+  - VLDL
+--- !u!114 &1742480407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742480404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13fc6dbf70b3c83488201da9ad736698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _question: "Qu\xE3o importante \xE9 o colesterol em fun\xE7\xF5es do corpo?"
+  _rightAnswerIndex: 0
+  _answers:
+  - "Tem um papel importante na estrutura celular e na fun\xE7\xE3o digestiva"
+  - "Tem um papel importante na fun\xE7\xE3o circulat\xF3ria"
+  - "Elimina as toxinas no f\xEDgado"
+  - "\xC9 o excesso de gordura no sangue, portanto sem fun\xE7\xE3o corporal importante"
+--- !u!114 &1742480408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742480404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13fc6dbf70b3c83488201da9ad736698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _question: "Para vigiar o risco cardiovascular, todos os adultos com mais de 20
+    anos de idade devem solicitar que seu m\xE9dico pe\xE7a qual dos seguintes testes
+    a cada 4 a 6 anos? "
+  _rightAnswerIndex: 0
+  _answers:
+  - "Perfil lip\xEDdico em jejum"
+  - Glicemia de jejum
+  - "Testes de fun\xE7\xE3o hep\xE1tica"
+  - "Testes de fun\xE7\xE3o renal"
 --- !u!1001 &1746093112
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3691,6 +3736,138 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1805665386}
+  m_CullTransparentMesh: 1
+--- !u!1 &1842383031
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1842383032}
+  - component: {fileID: 1842383035}
+  - component: {fileID: 1842383034}
+  - component: {fileID: 1842383033}
+  m_Layer: 5
+  m_Name: Fruit (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1842383032
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842383031}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 529670968}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 140, y: -684.93195}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1842383033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842383031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1842383034}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1848867143}
+        m_TargetAssemblyTypeName: BloodyBalls.Managers.GameManager, Assembly-CSharp
+        m_MethodName: NextLevel
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1842383034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842383031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: e484131d27830be479ac9f4218a2319c, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1842383035
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842383031}
   m_CullTransparentMesh: 1
 --- !u!1 &1848867142
 GameObject:
@@ -4323,6 +4500,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2048801526}
   - component: {fileID: 2048801527}
+  - component: {fileID: 2048801528}
+  - component: {fileID: 2048801529}
   m_Layer: 0
   m_Name: Diabetes Quizzes
   m_TagString: Untagged
@@ -4356,13 +4535,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13fc6dbf70b3c83488201da9ad736698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _question: Some question here about diabetes
+  _question: "O que \xE9 a Diabetes?"
   _rightAnswerIndex: 0
   _answers:
-  - 1
-  - 2
-  - 3
-  - 4
+  - "Excesso de a\xE7\xFAcar/glicose no sangue"
+  - "Falta de a\xE7\xFAcar/glicose no sangue"
+  - Excesso de insulina no sangue
+  - Excesso de peso
+--- !u!114 &2048801528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2048801525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13fc6dbf70b3c83488201da9ad736698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _question: O que sucede na Diabetes tipo 1?
+  _rightAnswerIndex: 0
+  _answers:
+  - "O p\xE2ncreas n\xE3o produz insulina"
+  - "O p\xE2ncreas produz insulina em excesso"
+  - "O p\xE2ncreas ora produz insulina em excesso, ora em n\xEDveis insuficientes"
+  - "O come\xE7a a produzir glicose"
+--- !u!114 &2048801529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2048801525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13fc6dbf70b3c83488201da9ad736698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _question: O que sucede na Diabetes tipo 2?
+  _rightAnswerIndex: 0
+  _answers:
+  - "O p\xE2ncreas produz n\xEDveis insuficientes de insulina e/ou o organismo \xE9
+    resistente \xE0 insulina"
+  - "O p\xE2ncreas produz n\xEDveis excessivos de insulina"
+  - "O p\xE2ncreas produz n\xEDveis insuficientes de insulina"
+  - "O p\xE2ncreas deixa de produzir insulina"
 --- !u!1 &2053240549
 GameObject:
   m_ObjectHideFlags: 0

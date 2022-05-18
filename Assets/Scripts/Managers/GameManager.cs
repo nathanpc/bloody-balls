@@ -106,6 +106,7 @@ namespace BloodyBalls.Managers {
 		/// Sets up the probabilities involved in the game.
 		/// </summary>
 		private void SetupProbabilities() {
+			maxCellProbability = 0;
 			for (int i = 0; i < brickProbabilities.Length; i++) {
 				maxCellProbability += brickProbabilities[i];
 			}
@@ -205,6 +206,7 @@ namespace BloodyBalls.Managers {
 			uiManager.ApplySkin(levelManager.CurrentLevelType);
 			brickPrefabs = levelManager.CurrentLevelType.Cells;
 			brickProbabilities = levelManager.CurrentLevelType.CellProbabilities;
+			SetupProbabilities();
 
 			// Should we destroy everything?
 			if (clearGrid) {
