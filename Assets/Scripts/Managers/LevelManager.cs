@@ -34,11 +34,10 @@ namespace BloodyBalls.Managers {
 		}
 
 		/// <summary>
-		/// Goes to the next level and sets everything up.
+		/// Goes to the next level. WARNING: Level skin must be applied separately.
 		/// </summary>
 		public void GoToNextLevel() {
 			CurrentLevelType = GetNextLevel();
-			ApplyLevelStyling(CurrentLevelType);
 		}
 
 		/// <summary>
@@ -60,14 +59,6 @@ namespace BloodyBalls.Managers {
 
 			// Get the next level randomly.
 			return levelTypes[random.Next(levelTypes.Count)];
-		}
-
-		/// <summary>
-		/// Sets everything up according to the level settings.
-		/// </summary>
-		/// <param name="level">Level to be used as the base.</param>
-		protected void ApplyLevelStyling(LevelType level) {
-
 		}
 
 		/// <summary>

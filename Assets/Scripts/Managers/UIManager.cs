@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using BloodyBalls.Utilities;
 using BloodyBalls.Controls;
+using BloodyBalls.Levels;
 
 namespace BloodyBalls.Managers {
 	/// <summary>
@@ -125,6 +126,10 @@ namespace BloodyBalls.Managers {
 			fieldBackground.localScale = new Vector3(Mathf.Min(screenRect.width, screenRect.height) + 0.6f, gridHeight + 0.6f, 0);
 			fieldBackground.transform.position = (topWall.transform.position + bottomWall.transform.position) / 2;
 
+			// Setup the screen background.
+			screenBackground.localScale = new Vector2(screenRect.width + 3, screenRect.height + 3);
+			screenBackground.transform.position = (topWall.transform.position + bottomWall.transform.position) / 2;
+
 			// Finish setting up the side walls.
 			leftWall.transform.position = new Vector3(-fieldBackground.localScale.x / 2 + startOffset, 0, 0);
 			rightWall.transform.position = new Vector3(fieldBackground.localScale.x / 2 - startOffset, 0, 0);
@@ -146,6 +151,15 @@ namespace BloodyBalls.Managers {
 
 			// Create the trajectory dots for the player to orient themselves.
 			Player.SetUpTrajectoryDots();
+		}
+		
+		/// <summary>
+		/// Applies a skin to the game based on a level.
+		/// </summary>
+		/// <param name="level">Level type to get the skin from.</param>
+		public void ApplySkin(LevelType level) {
+			screenBackground.GetComponent<SpriteRenderer>().color = level.BackgroundColor;
+			fieldBackground.GetComponent<SpriteRenderer>().color = level.FieldColor;
 		}
 
 		public void DisplayTitlecard(bool isShown) {

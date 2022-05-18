@@ -193,6 +193,7 @@ namespace BloodyBalls.Managers {
 		private void NextLevel() {
 			// Setup a new level.
 			levelManager.GoToNextLevel();
+			uiManager.ApplySkin(levelManager.CurrentLevelType);
 
 			// Go to the next turn and display a little message.
 			NextTurn();
