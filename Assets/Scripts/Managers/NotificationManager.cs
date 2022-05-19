@@ -26,7 +26,7 @@ namespace BloodyBalls.Managers {
 			shownPosition = notificationBox.position;
 
 			Rect rect = notificationBox.rect;
-			hiddenPosition.y += rect.height + CameraUtils.GetScreenRect().height+1000;
+			hiddenPosition.y += rect.height + CameraUtils.GetScreenRect().height+2000;
 			notificationBox.position = hiddenPosition;
 		}
 
