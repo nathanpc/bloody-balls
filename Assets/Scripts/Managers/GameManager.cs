@@ -126,11 +126,13 @@ namespace BloodyBalls.Managers {
 		}
 
 		void OnReplayButtonClicked() {
+			uiManager.DisplayNextLevel(false);
 			uiManager.DisplayGameOver(false);
 			StartGame();
 		}
 
 		void OnMainMenuButtonClicked() {
+			uiManager.DisplayNextLevel(false);
 			uiManager.DisplayGameOver(false);
 			uiManager.DisplayTitlecard(true);
 		}
@@ -225,6 +227,8 @@ namespace BloodyBalls.Managers {
 			}
 
 			// Go to the next turn and display a little message.
+			uiManager.DisplayHUD(true);
+			uiManager.DisplayNextLevel(false);
 			NextTurn(true);
 		}
 
@@ -367,8 +371,12 @@ namespace BloodyBalls.Managers {
 			// Increase the turn counter.
 			nTurn++;
 
-			// Check if it's time to go to the next level.
+			// Check if it's time to go to the next level or do a little quiz.
 			if ((nTurn % levelManager.TurnsBeforeLevelSwitch) == 0) {
+				uiManager.DisplayHUD(false);
+				uiManager.DisplayNextLevel(true);
+				return;
+			} else if ((nTurn % levelManager.TurnsBeforeQuizNag) == 0) {
 				quizManager.Open(levelManager.CurrentLevelType.GetRandomQuiz());
 				return;
 			}

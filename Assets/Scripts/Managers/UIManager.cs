@@ -43,6 +43,8 @@ namespace BloodyBalls.Managers {
 		private RectTransform titlecard;
 		[SerializeField]
 		private RectTransform gameOver;
+		[SerializeField]
+		private RectTransform nextLevel;
 
 		[SerializeField]
 		private RectTransform hud;
@@ -67,6 +69,7 @@ namespace BloodyBalls.Managers {
 			SetupUIElements();
 
 			DisplayTitlecard(true);
+			DisplayNextLevel(false);
 			DisplayGameOver(false);
 			DisplayHUD(false);
 		}
@@ -177,6 +180,10 @@ namespace BloodyBalls.Managers {
 
 		public void DisplayGameOver(bool isShown) {
 			gameOver.gameObject.SetActive(isShown);
+		}
+
+		public void DisplayNextLevel(bool isShown) {
+			nextLevel.gameObject.SetActive(isShown);
 		}
 
 		public void DisplayHUD(bool isShown) {

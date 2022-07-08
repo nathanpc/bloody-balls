@@ -12,6 +12,7 @@ namespace BloodyBalls.Managers {
 	public class LevelManager : MonoBehaviour {
 		[Header("Game Design")]
 		[SerializeField] private int _turnsBeforeLevelSwitch = 10;
+		[SerializeField] private int _turnsBeforeQuizNag = 4;
 
 		[Header("Controlled Objects")]
 		[SerializeField] private GameObject screenBackground;
@@ -72,6 +73,14 @@ namespace BloodyBalls.Managers {
 		public int TurnsBeforeLevelSwitch {
 			get { return _turnsBeforeLevelSwitch; }
 			set { _turnsBeforeLevelSwitch = value; }
+		}
+
+		/// <summary>
+		/// Number of turns before a quiz nag.
+		/// </summary>
+		public int TurnsBeforeQuizNag {
+			get { return _turnsBeforeQuizNag; }
+			set { _turnsBeforeQuizNag = value; }
 		}
 
 		/// <summary>
