@@ -1183,6 +1183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 1
+  uiManager: {fileID: 1856828184}
   amount: 3
   player: {fileID: 1432835079}
 --- !u!114 &695348701
@@ -2275,6 +2276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 1
+  uiManager: {fileID: 1856828184}
   tagName: Hitable
   damage: 1
   afflictedCells:
@@ -4151,6 +4153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 3
+  uiManager: {fileID: 1856828184}
   tagName: Hitable
   damage: 5
   afflictedCells:
