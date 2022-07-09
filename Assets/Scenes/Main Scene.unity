@@ -2985,6 +2985,7 @@ GameObject:
   - component: {fileID: 1354933731}
   - component: {fileID: 1354933730}
   - component: {fileID: 1354933732}
+  - component: {fileID: 1354933733}
   m_Layer: 0
   m_Name: Level Manager
   m_TagString: Untagged
@@ -3005,6 +3006,7 @@ Transform:
   m_Children:
   - {fileID: 1742480405}
   - {fileID: 2048801526}
+  - {fileID: 1855435948}
   m_Father: {fileID: 274085277}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3087,6 +3089,38 @@ MonoBehaviour:
   - "Muitas vezes, o cuidado com a alimenta\xE7\xE3o e a pr\xE1tica regular de exerc\xEDcio
     s\xE3o suficientes para evitar a diabetes ou para a manter controlada."
   quizQuestionsContainer: {fileID: 2048801525}
+--- !u!114 &1354933733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354933728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d91681df033c9584ea7c6ea979b89da5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: Tabagismo
+  _screenColor: {r: 0.14150941, g: 0.14150941, b: 0.14150941, a: 1}
+  _fieldColor: {r: 0.254717, g: 0.254717, b: 0.254717, a: 0.92156863}
+  _cellPrefabs:
+  - {fileID: 11496346, guid: 790055999931449429df731175f1671d, type: 3}
+  - {fileID: 11490368, guid: 64dfeb2bea0103c4b9845cc042b545e0, type: 3}
+  _cellProbabilities:
+  - 13
+  - 3
+  _notificationBoxColor: {r: 0.6698113, g: 0.6698113, b: 0.6698113, a: 0.92156863}
+  _notificationTextColor: {r: 0, g: 0, b: 0, a: 1}
+  _messages:
+  - "Fumar \xE9 prejudicial a quase todos os \xF3rg\xE3os do organismo. Os principais
+    problemas relacionados ao fumo s\xE3o: Ataque card\xEDaco e dor no peito, c\xE2ncer
+    do pulm\xE3o, doen\xE7a nos pulm\xF5es que dificulta a respira\xE7\xE3o."
+  - "Embora o vapor produzido pelos cigarros eletr\xF3nicos seja quimicamente menos
+    complexo e potencialmente menos nocivo do que o fumo do tabaco ou do que o vapor
+    do tabaco aquecido, n\xE3o \xE9 isento de riscos, quer para os consumidores,
+    quer para os n\xE3o consumidores expostos em locais fechados."
+  quizQuestionsContainer: {fileID: 1855435947}
 --- !u!1 &1365321021
 GameObject:
   m_ObjectHideFlags: 0
@@ -4381,6 +4415,78 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!1 &1855435947
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1855435948}
+  - component: {fileID: 1855435951}
+  - component: {fileID: 1855435950}
+  m_Layer: 0
+  m_Name: Smoking Quizzes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1855435948
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1855435947}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1354933729}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1855435950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1855435947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13fc6dbf70b3c83488201da9ad736698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _question: Qual das seguintes abordagens de tratamento tem as maiores taxas de
+    sucesso em ajudar as pessoas a parar de fumar?
+  _rightAnswerIndex: 0
+  _answers:
+  - "Aconselhamento e apoio mais medica\xE7\xE3o"
+  - Acupuntura
+  - "Tratamentos fitoter\xE1picos"
+  - Hipnose
+--- !u!114 &1855435951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1855435947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13fc6dbf70b3c83488201da9ad736698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _question: "Depois de parar de fumar, quanto tempo normalmente leva at\xE9 que
+    os sintomas de abstin\xEAncia da nicotina comecem a diminuir?"
+  _rightAnswerIndex: 1
+  _answers:
+  - Uma semana
+  - 2 a 4 semanas
+  - 1 a 3 meses
+  - Aproximadamente 1 ano
 --- !u!1 &1856828182
 GameObject:
   m_ObjectHideFlags: 0
