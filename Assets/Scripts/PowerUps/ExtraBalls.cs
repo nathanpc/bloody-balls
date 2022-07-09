@@ -9,15 +9,16 @@ namespace BloodyBalls.PowerUps {
 	/// <summary>
 	/// Adds extra balls on demand.
 	/// </summary>
-	public class ExtraBalls : MonoBehaviour, IPowerUp {
+	public class ExtraBalls : PowerUp {
 		[SerializeField] protected int amount = 3;
 		[SerializeField] protected Player player;
 
 		/// <summary>
 		/// Adds more balls.
 		/// </summary>
-		public void Activate() {
+		override public void Activate() {
 			player.AddBall();
+			base.Activate();
 		}
 	}
 }

@@ -29,9 +29,14 @@ namespace AppAdvisory.BallX
 			PlayerPrefs.Save ();
 		}
 
-		public static int GetCoins() 
-		{
-			return PlayerPrefs.GetInt (PLAYER_PREFS_COIN, 0);
+		public static int GetCoins() {
+			return PlayerPrefs.GetInt(PLAYER_PREFS_COIN, 0);
+		}
+
+		public static void RemoveCoins(int n) {
+			int coins = GetCoins() - n;
+			PlayerPrefs.SetInt(PLAYER_PREFS_COIN, coins);
+			PlayerPrefs.Save();
 		}
 
 

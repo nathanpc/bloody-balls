@@ -1167,7 +1167,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -30, y: -684.93195}
+  m_AnchoredPosition: {x: 89, y: -676}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &695348700
@@ -1182,6 +1182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21cc6a02f84949c498b1de8ac58648a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  points: 1
   amount: 3
   player: {fileID: 1432835079}
 --- !u!114 &695348701
@@ -2258,7 +2259,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -160, y: -684.93195}
+  m_AnchoredPosition: {x: -72.37582, y: -676}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1207807108
@@ -2273,9 +2274,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69765d771fbe4994aaf22ed979574530, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  points: 1
   tagName: Hitable
   damage: 1
   afflictedCells:
+  - {fileID: 11496346, guid: 96273c6220755f848b1926c9e4ec64a9, type: 3}
+  - {fileID: 11496346, guid: e47050c962f43d541b38ab8cf1311c21, type: 3}
+  - {fileID: 11496346, guid: bd3d38a817ea7d74b8375a9487da5f8f, type: 3}
+  - {fileID: 11490368, guid: c4c8282306bda644f803a4d565676c67, type: 3}
+  - {fileID: 11496346, guid: 790055999931449429df731175f1671d, type: 3}
+  - {fileID: 11490368, guid: 64dfeb2bea0103c4b9845cc042b545e0, type: 3}
   - {fileID: 11490368, guid: 06cc759e00962af4896783e804ffdd75, type: 3}
 --- !u!114 &1207807109
 MonoBehaviour:
@@ -4127,7 +4135,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -290.62418, y: -684.93195}
+  m_AnchoredPosition: {x: -235, y: -676}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1805665388
@@ -4142,9 +4150,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69765d771fbe4994aaf22ed979574530, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  points: 3
   tagName: Hitable
   damage: 5
   afflictedCells:
+  - {fileID: 11496346, guid: 96273c6220755f848b1926c9e4ec64a9, type: 3}
+  - {fileID: 11496346, guid: e47050c962f43d541b38ab8cf1311c21, type: 3}
+  - {fileID: 11496346, guid: bd3d38a817ea7d74b8375a9487da5f8f, type: 3}
   - {fileID: 11490368, guid: c4c8282306bda644f803a4d565676c67, type: 3}
   - {fileID: 11496346, guid: 790055999931449429df731175f1671d, type: 3}
   - {fileID: 11490368, guid: 64dfeb2bea0103c4b9845cc042b545e0, type: 3}

@@ -8,7 +8,7 @@ namespace BloodyBalls.PowerUps {
 	/// <summary>
 	/// Inflicts damage to specific hitable objects on screen.
 	/// </summary>
-	public class DamageHitables : MonoBehaviour, IPowerUp {
+	public class DamageHitables : PowerUp {
 		[SerializeField] protected string tagName = "Hitable";
 		[SerializeField] protected int damage = 5;
 		[SerializeField] private List<Cell> afflictedCells = null;
@@ -30,7 +30,7 @@ namespace BloodyBalls.PowerUps {
 		/// <summary>
 		/// Damages all hitable objects of the specified types.
 		/// </summary>
-		public void Activate() {
+		override public void Activate() {
 			// Go through objects with the right tag.
 			foreach (GameObject obj in GameObject.FindGameObjectsWithTag(tagName)) {
 				// Get the cell component if it exists.
@@ -56,6 +56,8 @@ namespace BloodyBalls.PowerUps {
 nextobj:
 				continue;
 			}
+
+			base.Activate();
 		}
 	}
 }
