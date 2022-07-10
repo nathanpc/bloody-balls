@@ -18,6 +18,7 @@ namespace BloodyBalls.Managers {
 		[SerializeField] protected LevelManager levelManager;
 		[SerializeField] protected UIManager uiManager;
 		[SerializeField] protected PopupQuizManager quizManager;
+		[SerializeField] protected TrainingHardware trainingHardware;
 
 		[Header("Player")]
 		[SerializeField] protected float ballSpeed = 10;
@@ -100,6 +101,8 @@ namespace BloodyBalls.Managers {
 			spawnedCells = new List<Transform>();
 			SetupProbabilities();
 			SetupPlayer();
+
+			trainingHardware.callback = ContinueGameSession;
 		}
 
 		/// <summary>
@@ -126,9 +129,16 @@ namespace BloodyBalls.Managers {
 		}
 
 		void OnReplayButtonClicked() {
+			StartCoroutine(trainingHardware.DoSession());
+		}
+
+		void ContinueGameSession() {
+			uiManager.Player.Show();
 			uiManager.DisplayNextLevel(false);
 			uiManager.DisplayGameOver(false);
-			StartGame();
+			uiManager.DisplayHUD(true);
+
+			NextLevel(true);
 		}
 
 		void OnMainMenuButtonClicked() {
