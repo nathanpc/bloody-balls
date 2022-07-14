@@ -62,6 +62,9 @@ namespace BloodyBalls.UI {
 		/// Shows the notification box.
 		/// </summary>
 		public void Show() {
+			if (notificationBox.position.y == shownPosition.y)
+				return;
+
 			Tween.Move(notificationBox, hiddenPosition, shownPosition, animationDuration);
 		}
 
@@ -70,6 +73,9 @@ namespace BloodyBalls.UI {
 		/// </summary>
 		/// <param name="shownTime">Time for the notification to be displayed for in seconds.</param>
 		public void Show(int shownTime) {
+			if (notificationBox.position.y == shownPosition.y)
+				return;
+
 			Tween.Move(notificationBox, hiddenPosition, shownPosition, animationDuration);
 			Hide(shownTime);
 		}
