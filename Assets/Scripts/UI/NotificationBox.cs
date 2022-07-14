@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using BloodyBalls.Utilities;
 
-namespace BloodyBalls.Managers {
+namespace BloodyBalls.UI {
 	/// <summary>
 	/// Manages the notification the player will get while playing the game.
 	/// </summary>
@@ -49,17 +49,13 @@ namespace BloodyBalls.Managers {
 		/// <summary>
 		/// Hides the notification box.
 		/// </summary>
-		public void Hide() {
-			Tween.Move(notificationBox, shownPosition, hiddenPosition, animationDuration);
-		}
+		/// <param name="delay">Delay between the start of the animation.</param>
+		public void Hide(int delay = 0) {
+			if (notificationBox.position.y == hiddenPosition.y)
+				return;
 
-		/// <summary>
-		/// Hides the notification box.
-		/// </summary>
-		/// <param name="animationDuration">Duration of the animation in seconds.</param>
-		public void Hide(int animationDuration) {
 			Tween.Move(notificationBox, shownPosition, hiddenPosition, this.animationDuration,
-				animationDuration);
+				delay);
 		}
 
 		/// <summary>
