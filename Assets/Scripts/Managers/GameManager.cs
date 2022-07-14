@@ -15,10 +15,8 @@ namespace BloodyBalls.Managers {
 	/// </summary>
 	public class GameManager : MonoBehaviour {
 		[Header("Managers")]
-		[SerializeField] protected NotificationBox notificationBox;
 		[SerializeField] protected LevelManager levelManager;
 		[SerializeField] protected UIManager uiManager;
-		[SerializeField] protected PopupQuizManager quizManager;
 
 		[Header("Player")]
 		[SerializeField] protected float ballSpeed = 10;
@@ -190,13 +188,8 @@ namespace BloodyBalls.Managers {
 		/// <param name="showNotification">Show a litle notification related to this level?</param>
 		public void NextTurn(bool showNotification) {
 			// Do visual stuff.
-			quizManager.Hide();
 			uiManager.SetHUDCurrentScore(nTurn);
 			StartCoroutine(NextTurnCoroutine());
-
-			// Should we show an annoying notification?
-			if (showNotification)
-				notificationBox.Notify(levelManager.CurrentLevelType.GetRandomMessage());
 		}
 
 		/// <summary>
@@ -372,6 +365,7 @@ namespace BloodyBalls.Managers {
 			// Increase the turn counter.
 			nTurn++;
 
+			/*
 			// Check if it's time to go to the next level or do a little quiz.
 			if ((nTurn % levelManager.TurnsBeforeLevelSwitch) == 0) {
 				uiManager.DisplayHUD(false);
@@ -381,6 +375,7 @@ namespace BloodyBalls.Managers {
 				quizManager.Open(levelManager.CurrentLevelType.GetRandomQuiz());
 				return;
 			}
+			*/
 
 			// Just go to the next turn.
 			NextTurn(false);
