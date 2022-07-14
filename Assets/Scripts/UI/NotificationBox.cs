@@ -8,7 +8,7 @@ namespace BloodyBalls.Managers {
 	/// <summary>
 	/// Manages the notification the player will get while playing the game.
 	/// </summary>
-	public class NotificationManager : MonoBehaviour {
+	public class NotificationBox : MonoBehaviour {
 		[Header("Components")]
 		[SerializeField] private RectTransform notificationBox;
 		[SerializeField] private Text textBox;

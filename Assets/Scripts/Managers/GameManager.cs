@@ -14,7 +14,7 @@ namespace BloodyBalls.Managers {
 	/// </summary>
 	public class GameManager : MonoBehaviour {
 		[Header("Managers")]
-		[SerializeField] protected NotificationManager notificationManager;
+		[SerializeField] protected NotificationBox notificationBox;
 		[SerializeField] protected LevelManager levelManager;
 		[SerializeField] protected UIManager uiManager;
 		[SerializeField] protected PopupQuizManager quizManager;
@@ -195,7 +195,7 @@ namespace BloodyBalls.Managers {
 
 			// Should we show an annoying notification?
 			if (showNotification)
-				notificationManager.Notify(levelManager.CurrentLevelType.GetRandomMessage());
+				notificationBox.Notify(levelManager.CurrentLevelType.GetRandomMessage());
 		}
 
 		/// <summary>
