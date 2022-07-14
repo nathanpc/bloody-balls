@@ -7,6 +7,7 @@ using AppAdvisory.BallX;
 using BloodyBalls.Cells;
 using BloodyBalls.Levels;
 using BloodyBalls.Utilities;
+using BloodyBalls.UI;
 
 namespace BloodyBalls.Managers {
 	/// <summary>

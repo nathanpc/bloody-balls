@@ -11,6 +11,7 @@ namespace BloodyBalls.Managers {
 	/// </summary>
 	public class PopupQuizManager : MonoBehaviour {
 		[Header("Components")]
+		[SerializeField] private InputManager inputManager;
 		[SerializeField] protected RectTransform popupBox;
 		[SerializeField] protected Text questionText;
 		[SerializeField] protected Button[] answerButtons = new Button[4];
@@ -38,6 +39,7 @@ namespace BloodyBalls.Managers {
 		/// </summary>
 		public void Hide() {
 			//Tween.Move(notificationBox, shownPosition, hiddenPosition, animationDuration);
+			inputManager.EnableInput();
 			popupBox.gameObject.SetActive(false);
 		}
 
@@ -47,6 +49,7 @@ namespace BloodyBalls.Managers {
 		public void Show() {
 			//Tween.Move(notificationBox, hiddenPosition, shownPosition, animationDuration);
 			popupBox.gameObject.SetActive(true);
+			inputManager.DisableInput();
 		}
 
 		/// <summary>

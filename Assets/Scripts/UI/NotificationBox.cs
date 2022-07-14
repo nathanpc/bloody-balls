@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using BloodyBalls.Utilities;
+using BloodyBalls.Managers;
 
 namespace BloodyBalls.UI {
 	/// <summary>
@@ -10,6 +11,7 @@ namespace BloodyBalls.UI {
 	/// </summary>
 	public class NotificationBox : MonoBehaviour {
 		[Header("Components")]
+		[SerializeField] private InputManager inputManager;
 		[SerializeField] private RectTransform notificationBox;
 		[SerializeField] private Text textBox;
 
@@ -51,6 +53,8 @@ namespace BloodyBalls.UI {
 		/// </summary>
 		/// <param name="delay">Delay between the start of the animation.</param>
 		public void Hide(int delay = 0) {
+			inputManager.EnableInput();
+
 			if (notificationBox.position.y == hiddenPosition.y)
 				return;
 
@@ -62,6 +66,8 @@ namespace BloodyBalls.UI {
 		/// Shows the notification box.
 		/// </summary>
 		public void Show() {
+			inputManager.DisableInput();
+
 			if (notificationBox.position.y == shownPosition.y)
 				return;
 
@@ -73,6 +79,8 @@ namespace BloodyBalls.UI {
 		/// </summary>
 		/// <param name="shownTime">Time for the notification to be displayed for in seconds.</param>
 		public void Show(int shownTime) {
+			inputManager.DisableInput();
+
 			if (notificationBox.position.y == shownPosition.y)
 				return;
 

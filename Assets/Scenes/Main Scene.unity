@@ -486,6 +486,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11418666, guid: bcd3d435423fe4c049fc85e9bcfe212a, type: 3}
+      propertyPath: inputManager
+      value: 
+      objectReference: {fileID: 2053240551}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bcd3d435423fe4c049fc85e9bcfe212a, type: 3}
 --- !u!1 &182268926
@@ -1736,6 +1740,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d23202f8a7f7f646a4e443923dfa215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputManager: {fileID: 2053240551}
   notificationBox: {fileID: 1059404663}
   textBox: {fileID: 1311436043}
   _displayDuration: 10
@@ -3983,6 +3988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a344987d3c1823449dd0ee41e9bbea1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputManager: {fileID: 2053240551}
   popupBox: {fileID: 17737353}
   questionText: {fileID: 1266487120}
   answerButtons:
@@ -5135,6 +5141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f3919659913c494bbd9d24a27c099d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  acceptingInput: 1
 --- !u!1 &2083853681
 GameObject:
   m_ObjectHideFlags: 0
@@ -5462,9 +5469,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1059404666}
-        m_TargetAssemblyTypeName: BloodyBalls.Managers.NotificationBox, Assembly-CSharp
+        m_TargetAssemblyTypeName: BloodyBalls.UI.NotificationBox, Assembly-CSharp
         m_MethodName: Hide
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

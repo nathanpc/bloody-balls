@@ -3,12 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using AppAdvisory.BallX;
+using BloodyBalls.Managers;
 
 namespace BloodyBalls.Controls {
 	/// <summary>
 	/// Controls all aspects of the player's balls.
 	/// </summary>
 	public class Player : MonoBehaviour {
+		public InputManager inputManager;
+
 		[Header("Complete Mess")]
 		[SerializeField]
 		private Ball ballPrefab;
@@ -76,13 +79,13 @@ namespace BloodyBalls.Controls {
 			gameObject.SetActive(false);
 		}
 
-		private void SubscribeToInputManager() {
+		public void SubscribeToInputManager() {
 			InputManager.OnSwipeStarted += StartFiring;
 			InputManager.OnSwipe += Fire;
 			InputManager.OnSwipeEnded += EndFiring;
 		}
 
-		private void UnsubscribeToInputManager() {
+		public void UnsubscribeToInputManager() {
 			InputManager.OnSwipeStarted -= StartFiring;
 			InputManager.OnSwipe -= Fire;
 			InputManager.OnSwipeEnded -= EndFiring;
@@ -150,6 +153,9 @@ namespace BloodyBalls.Controls {
 
 
 		private void StartFiring(Vector3 startPos) {
+			if (!inputManager.IsAcceptingInput())
+				return;
+
 			foreach (Transform dot in trajectoryDots) {
 				dot.position = transform.position;
 				dot.gameObject.SetActive(true);
@@ -157,12 +163,18 @@ namespace BloodyBalls.Controls {
 		}
 
 		private void Fire(Vector3 movement) {
+			if (!inputManager.IsAcceptingInput())
+				return;
+
 			if (movement == Vector3.zero)
 				return;
 			SetTrajectoryPoints(transform.position, movement);
 		}
 
 		private void EndFiring(Vector3 movement) {
+			if (!inputManager.IsAcceptingInput())
+				return;
+
 			foreach (Transform dot in trajectoryDots) {
 				dot.gameObject.SetActive(false);
 			}
