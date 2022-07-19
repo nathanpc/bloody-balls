@@ -155,7 +155,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.00006890297}
+  m_AnchoredPosition: {x: 0, y: -0.00006785959}
   m_SizeDelta: {x: 0, y: 237.0126}
   m_Pivot: {x: 0, y: 1}
 --- !u!850595691 &55926447
@@ -716,6 +716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ac6b3bb1de89414e8eb35b254ebba1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneManager: {fileID: 8632466614290157232}
   containerSizingObject: {fileID: 1708056684}
   buttonContainer: {fileID: 3175314}
   buttonPrefab: {fileID: 2213614912277642484, guid: 99fbf1ab7f44e5e4d8e52d14a93d1a0e,
@@ -1270,3 +1271,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c6164cdbd3f253408dc1a9c9bcc15b2, type: 3}
+--- !u!114 &8632466614290157232 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6314418264392626986, guid: 3c6164cdbd3f253408dc1a9c9bcc15b2,
+    type: 3}
+  m_PrefabInstance: {fileID: 8632466614290157231}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7864b801305b0b44f80b15da2127ce5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
