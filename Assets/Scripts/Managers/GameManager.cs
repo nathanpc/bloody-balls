@@ -123,6 +123,20 @@ namespace BloodyBalls.Managers {
 			currentMaxCellCount = startMinCellCount;
 			StartPlayer();
 			NextLevel(false);
+
+			AdvanceGrid();
+			AdvanceGrid();
+			AdvanceGrid();
+			AdvanceGrid();
+			AdvanceGrid();
+			AdvanceGrid();
+		}
+
+		private void AdvanceGrid() {
+			CreateLine();
+			MoveGrid();
+			CreateSuperCells();
+			UpgradeDifficulty();
 		}
 
 		private void CreateLine() {
@@ -147,7 +161,8 @@ namespace BloodyBalls.Managers {
 			Vector3 endPosition;
 			foreach (Transform gridCell in spawnedCells) {
 				endPosition = gridCell.position - Vector3.up * uiManager.CellStepX;
-				gridCell.DOMove(gridCell.position, endPosition, 0.5f);
+				//gridCell.DOMove(gridCell.position, endPosition, 0.5f);
+				gridCell.position = endPosition;
 
 				Cell cell = gridCell.GetComponent<Cell>();
 				if (cell != null) {
@@ -261,11 +276,6 @@ namespace BloodyBalls.Managers {
 		}
 
 		private IEnumerator NextTurnCoroutine() {
-			CreateLine();
-			MoveGrid();
-			CreateSuperCells();
-			UpgradeDifficulty();
-
 			if (CheckLoose()) {
 				ballToAddCount = 0;
 				source.PlayOneShot(gameOver);
@@ -280,7 +290,6 @@ namespace BloodyBalls.Managers {
 
 				//player.transform.position = new Vector3 (screenRect.xMax, player.transform.position.y, 0);	
 				uiManager.Player.StartTurn();
-
 			}
 		}
 
