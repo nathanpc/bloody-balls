@@ -10,6 +10,7 @@ namespace BloodyBalls.Managers {
 	public class SceneManager : MonoBehaviour {
 		[Header("Scene Names")]
 		[SerializeField] protected string mainMenu = "Main Menu";
+		[SerializeField] protected string levelMenu = "Level Menu";
 		[SerializeField] protected string playArea = "Play Area";
 		[SerializeField] protected string finishedLevel = "Finished Level";
 		[SerializeField] protected string gameOver = "Game Over";
@@ -27,6 +28,13 @@ namespace BloodyBalls.Managers {
 		/// </summary>
 		public void SwitchToMainMenu() {
 			SwitchScene(mainMenu);
+		}
+
+		/// <summary>
+		/// Switches to the level menu scene.
+		/// </summary>
+		public void SwitchToLevelMenu() {
+			SwitchScene(levelMenu);
 		}
 
 		/// <summary>
