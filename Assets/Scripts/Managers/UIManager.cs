@@ -36,19 +36,7 @@ namespace BloodyBalls.Managers {
 
 		[Header("Complete Mess")]
 		[SerializeField]
-		private RectTransform titlecard;
-		[SerializeField]
-		private RectTransform gameOver;
-		[SerializeField]
-		private RectTransform nextLevel;
-
-		[SerializeField]
 		private RectTransform hud;
-
-		[SerializeField]
-		private Text gameOverCurrentScore;
-		[SerializeField]
-		private Text gameOverBestScore;
 
 		[SerializeField]
 		private Text hudCurrentScore;
@@ -57,23 +45,15 @@ namespace BloodyBalls.Managers {
 		[SerializeField]
 		private Text hudCoins;
 
-		public Action PlayButtonClicked;
-		public Action ReplayButtonClicked;
-		public Action MainMenuButtonClicked;
-
 		void Start() {
 			SetupUIElements();
-
-			DisplayTitlecard(true);
-			DisplayNextLevel(false);
-			DisplayGameOver(false);
-			DisplayHUD(false);
+			//DisplayHUD(false);
 		}
 
 		/// <summary>
 		/// Sets up all of the UI elements.
 		/// </summary>
-		private void SetupUIElements() {
+		public void SetupUIElements() {
 			SetupCellGrid();
 			SetupPlayFieldBounds();
 			SetupPlayerPosition();
@@ -166,28 +146,8 @@ namespace BloodyBalls.Managers {
 			fieldBackground.GetComponent<SpriteRenderer>().color = level.FieldColor;
 		}
 
-		public void DisplayTitlecard(bool isShown) {
-			titlecard.gameObject.SetActive(isShown);
-		}
-
-		public void DisplayGameOver(bool isShown) {
-			gameOver.gameObject.SetActive(isShown);
-		}
-
-		public void DisplayNextLevel(bool isShown) {
-			nextLevel.gameObject.SetActive(isShown);
-		}
-
 		public void DisplayHUD(bool isShown) {
 			hud.gameObject.SetActive(isShown);
-		}
-
-		public void SetGameOverBestScore(int score) {
-			gameOverBestScore.text = "BEST " + score.ToString();
-		}
-
-		public void SetGameOverCurrentScore(int score) {
-			gameOverCurrentScore.text = score.ToString();
 		}
 
 		public void SetHUDBestScore(int score) {
@@ -202,22 +162,6 @@ namespace BloodyBalls.Managers {
 			hudCoins.text = coins.ToString();
 		}
 
-		public void OnPlayButton() {
-			if (PlayButtonClicked != null)
-				PlayButtonClicked();
-
-			DisplayTitlecard(false);
-		}
-
-		public void OnReplayButton() {
-			if (ReplayButtonClicked != null)
-				ReplayButtonClicked();
-		}
-
-		public void OnMainMenuButton() {
-			if (MainMenuButtonClicked != null)
-				MainMenuButtonClicked();
-		}
 
 		/// <summary>
 		/// Container that will hold the grid of cells for us.

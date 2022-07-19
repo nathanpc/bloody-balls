@@ -194,7 +194,7 @@ namespace BloodyBalls.Controls {
 
 			UnsubscribeToInputManager();
 
-			DisplayPlayer(false);
+			//DisplayPlayer(false);
 			stopedBallsCount = 0;
 			StartCoroutine(SpawnBallsCoroutine(movement));
 		}
@@ -217,7 +217,7 @@ namespace BloodyBalls.Controls {
 				yield return new WaitForSeconds(SpawnFrequency);
 			}
 			yield return new WaitForSeconds(2 * SpawnFrequency);
-			DisplayNRemainingBalls(false);
+			//DisplayNRemainingBalls(false);
 		}
 
 		void SetNRemainingBalls(int count) {

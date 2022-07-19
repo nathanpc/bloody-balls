@@ -92,13 +92,12 @@ namespace BloodyBalls.Managers {
 			if (brickPrefabs.Length != brickProbabilities.Length)
 				throw new System.Exception("Cell Prefabs and Probabilities don't have the same length!");
 
-			// Setup some event stuff.
-			SubscribeToUIManagerActions();
-
 			// Sets up the game aspects.
 			spawnedCells = new List<Transform>();
+			uiManager.SetupUIElements();
 			SetupProbabilities();
 			SetupPlayer();
+			StartGame();
 		}
 
 		/// <summary>
@@ -112,31 +111,6 @@ namespace BloodyBalls.Managers {
 
 			maxSpawnProbability = brickProbability + powerUpProbability + emptyProbabilty;
 		}
-
-		#region UI
-		void SubscribeToUIManagerActions() {
-			uiManager.PlayButtonClicked += OnPlayButtonClicked;
-			uiManager.MainMenuButtonClicked += OnMainMenuButtonClicked;
-			uiManager.ReplayButtonClicked += OnReplayButtonClicked;
-		}
-
-		void OnPlayButtonClicked() {
-			StartGame();
-		}
-
-		void OnReplayButtonClicked() {
-			uiManager.DisplayNextLevel(false);
-			uiManager.DisplayGameOver(false);
-			StartGame();
-		}
-
-		void OnMainMenuButtonClicked() {
-			uiManager.DisplayNextLevel(false);
-			uiManager.DisplayGameOver(false);
-			uiManager.DisplayTitlecard(true);
-		}
-
-		#endregion
 
 		void StartGame() {
 			uiManager.SetHUDCoins(Utils.GetCoins());
@@ -221,8 +195,9 @@ namespace BloodyBalls.Managers {
 			}
 
 			// Go to the next turn and display a little message.
+			// TODO: Go to "next turn scene".
+
 			uiManager.DisplayHUD(true);
-			uiManager.DisplayNextLevel(false);
 			NextTurn(true);
 		}
 
@@ -317,15 +292,17 @@ namespace BloodyBalls.Managers {
 				spawnedCells.RemoveAt(i);
 			}
 
-			uiManager.Player.Hide();
+			//uiManager.Player.Hide();
 
 			Utils.SetBestScore(nTurn);
 			int bestScore = Utils.GetBestScore();
 
+			/*
 			uiManager.DisplayHUD(false);
 			uiManager.SetGameOverBestScore(bestScore);
 			uiManager.SetGameOverCurrentScore(nTurn);
 			uiManager.DisplayGameOver(true);
+			*/
 		}
 
 		private void UpgradeDifficulty() {
