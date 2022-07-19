@@ -364,6 +364,7 @@ Transform:
   - {fileID: 2053240550}
   - {fileID: 1354933729}
   - {fileID: 1856828183}
+  - {fileID: 621474882}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -411,6 +412,93 @@ RectTransform:
   m_AnchoredPosition: {x: 76, y: 305}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &621474881
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 274085277}
+    m_Modifications:
+    - target: {fileID: 6120554102433082980, guid: 3c6164cdbd3f253408dc1a9c9bcc15b2,
+        type: 3}
+      propertyPath: m_Name
+      value: Scene Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322139804836140587, guid: 3c6164cdbd3f253408dc1a9c9bcc15b2,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322139804836140587, guid: 3c6164cdbd3f253408dc1a9c9bcc15b2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 310.19394
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322139804836140587, guid: 3c6164cdbd3f253408dc1a9c9bcc15b2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 521.5463
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322139804836140587, guid: 3c6164cdbd3f253408dc1a9c9bcc15b2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -594.1514
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322139804836140587, guid: 3c6164cdbd3f253408dc1a9c9bcc15b2,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322139804836140587, guid: 3c6164cdbd3f253408dc1a9c9bcc15b2,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322139804836140587, guid: 3c6164cdbd3f253408dc1a9c9bcc15b2,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322139804836140587, guid: 3c6164cdbd3f253408dc1a9c9bcc15b2,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322139804836140587, guid: 3c6164cdbd3f253408dc1a9c9bcc15b2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322139804836140587, guid: 3c6164cdbd3f253408dc1a9c9bcc15b2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322139804836140587, guid: 3c6164cdbd3f253408dc1a9c9bcc15b2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3c6164cdbd3f253408dc1a9c9bcc15b2, type: 3}
+--- !u!4 &621474882 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6322139804836140587, guid: 3c6164cdbd3f253408dc1a9c9bcc15b2,
+    type: 3}
+  m_PrefabInstance: {fileID: 621474881}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &621474883 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6314418264392626986, guid: 3c6164cdbd3f253408dc1a9c9bcc15b2,
+    type: 3}
+  m_PrefabInstance: {fileID: 621474881}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7864b801305b0b44f80b15da2127ce5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &658334560
 GameObject:
   m_ObjectHideFlags: 0
@@ -1755,8 +1843,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelManager: {fileID: 1354933731}
   uiManager: {fileID: 1856828184}
+  sceneManager: {fileID: 621474883}
   ballSpeed: 10
   ballSpawnFrequency: 0.25
+  rowsToSpawn: 5
   nTurnToUpgradeMaxCellCount: 1
   upgradeMaxCellCount: 1
   nTurnToUpgradeMinCellCount: 5
@@ -2018,12 +2108,7 @@ MonoBehaviour:
   _numberOfCellRows: 8
   _numberOfCellColumns: 7
   _playerObject: {fileID: 1432835079}
-  titlecard: {fileID: 0}
-  gameOver: {fileID: 0}
-  nextLevel: {fileID: 0}
   hud: {fileID: 1293795399}
-  gameOverCurrentScore: {fileID: 0}
-  gameOverBestScore: {fileID: 0}
   hudCurrentScore: {fileID: 2083853683}
   hudBestScore: {fileID: 1236812299}
   hudCoins: {fileID: 1468854219}

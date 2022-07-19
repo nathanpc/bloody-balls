@@ -17,11 +17,16 @@ namespace BloodyBalls.Managers {
 		[Header("Managers")]
 		[SerializeField] protected LevelManager levelManager;
 		[SerializeField] protected UIManager uiManager;
+		[SerializeField] protected SceneManager sceneManager;
 
 		[Header("Player")]
 		[SerializeField] protected float ballSpeed = 10;
 		[SerializeField] protected float ballSpawnFrequency = 0.25f;
 
+		[Header("Game Design")]
+		[SerializeField] protected int rowsToSpawn = 5;
+
+		private bool gameStarted = false;
 		private float maxCellProbability;
 
 		[Header("Complete Mess")]
@@ -124,12 +129,11 @@ namespace BloodyBalls.Managers {
 			StartPlayer();
 			NextLevel(false);
 
-			AdvanceGrid();
-			AdvanceGrid();
-			AdvanceGrid();
-			AdvanceGrid();
-			AdvanceGrid();
-			AdvanceGrid();
+			for (int i = 0; i < rowsToSpawn; i++) {
+				AdvanceGrid();
+			}
+
+			gameStarted = true;
 		}
 
 		private void AdvanceGrid() {
@@ -176,6 +180,10 @@ namespace BloodyBalls.Managers {
 		/// </summary>
 		/// <param name="showNotification">Show a litle notification related to this level?</param>
 		public void NextTurn(bool showNotification) {
+			if (gameStarted && (spawnedCells.Count == 0)) {
+				sceneManager.SwitchToFinishedLevel();
+			}
+
 			// Do visual stuff.
 			uiManager.SetHUDCurrentScore(nTurn);
 			StartCoroutine(NextTurnCoroutine());
@@ -305,6 +313,8 @@ namespace BloodyBalls.Managers {
 
 			Utils.SetBestScore(nTurn);
 			int bestScore = Utils.GetBestScore();
+
+			sceneManager.SwitchToGameOver();
 
 			/*
 			uiManager.DisplayHUD(false);
