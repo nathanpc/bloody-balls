@@ -46,12 +46,7 @@ namespace BloodyBalls.Managers {
 		/// </summary>
 		/// <returns>Level type object.</returns>
 		protected LevelType GetNextLevel() {
-			// Make sure we get a different level.
-			LevelType level = CurrentLevelType;
-			while (level == CurrentLevelType)
-				level = GetRandomLevel();
-
-			return level;
+			return GameObject.Find("Level Type").GetComponent<LevelType>();
 		}
 
 		/// <summary>

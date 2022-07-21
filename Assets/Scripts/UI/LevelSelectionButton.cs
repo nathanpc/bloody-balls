@@ -30,6 +30,7 @@ namespace BloodyBalls.UI {
 			// Setup the level.
 			LevelType.LevelNumber = LevelNumber;
 			LevelType.gameObject.transform.parent = null;
+			LevelType.gameObject.name = "Level Type";
 			DontDestroyOnLoad(LevelType.gameObject);
 
 			// Switch scenes.
