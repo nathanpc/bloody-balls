@@ -225,5 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34b9c91fa9372f44ca459909ae622d6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sceneManager: {fileID: 0}
   label: {fileID: 2213614911985708881}
   _levelNumber: 0
+  _levelType: {fileID: 0}

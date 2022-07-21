@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using BloodyBalls.Levels;
 using BloodyBalls.Managers;
 
 namespace BloodyBalls.UI {
@@ -15,6 +17,7 @@ namespace BloodyBalls.UI {
 		[SerializeField] protected GameObject buttonPrefab;
 
 		[Header("Styling")]
+		[SerializeField] protected GameObject levelTypeContainer;
 		[SerializeField] protected int buttonsPerRow = 4;
 		[SerializeField] protected int ySpacing = 30;
 		[SerializeField] protected int margins = 30;
@@ -22,6 +25,7 @@ namespace BloodyBalls.UI {
 		[Header("Disposition")]
 		[SerializeField] protected int numberOfLevels = 30;
 
+		protected List<LevelType> levelTypes;
 		private Rect containerRect;
 		private Rect buttonRect;
 		private float xDisplacement;
@@ -42,6 +46,12 @@ namespace BloodyBalls.UI {
 			containerRect.height = (margins * 2) + (yDisplacement * Mathf.Ceil(numberOfLevels / buttonsPerRow));
 			buttonContainer.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(
 				RectTransform.Axis.Vertical, containerRect.height);
+
+			// Populate the level type array.
+			levelTypes = new List<LevelType>();
+			foreach (LevelType levelType in levelTypeContainer.GetComponentsInChildren<LevelType>()) {
+				levelTypes.Add(levelType);
+			}
 
 			// Place the buttons on screen.
 			PlaceButtons();
@@ -68,8 +78,23 @@ namespace BloodyBalls.UI {
 					buttonContainer.transform);
 				LevelSelectionButton button = buttonObj.GetComponent<LevelSelectionButton>();
 				button.SceneManager = sceneManager;
+				button.Button = buttonObj.GetComponent<Button>();
 				button.LevelNumber = i + 1;
+				button.LevelType = GetLevelType(i);
 			}
+		}
+
+		/// <summary>
+		/// Gets the appropriate level type given a level number.
+		/// </summary>
+		/// <param name="levelNumber">Number of the level to take into consideration.</param>
+		/// <returns>Level type related to the level number.</returns>
+		private LevelType GetLevelType(int levelNumber) {
+			int decision = levelNumber / 10;
+			if (decision >= levelTypes.Count)
+				decision /= 10;
+
+			return levelTypes[decision];
 		}
 	}
 }

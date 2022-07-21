@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using BloodyBalls.Managers;
+using BloodyBalls.Levels;
 
 namespace BloodyBalls.UI {
 	/// <summary>
@@ -12,20 +13,35 @@ namespace BloodyBalls.UI {
 		[Header("UI Elements")]
 		[SerializeField] private SceneManager _sceneManager;
 		[SerializeField] private Text label;
+		[SerializeField] private Button _button;
 
 		[Header("Game Design")]
 		[SerializeField] private int _levelNumber;
+		[SerializeField] protected LevelType _levelType;
 
 		// Start is called before the first frame update
 		void Start() {
-
 		}
 
 		/// <summary>
 		/// Takes the user to the level.
 		/// </summary>
 		public void GoToLevel() {
+			// Setup the level.
+			LevelType.LevelNumber = LevelNumber;
+			LevelType.gameObject.transform.parent = null;
+			DontDestroyOnLoad(LevelType.gameObject);
+
+			// Switch scenes.
 			SceneManager.SwitchToPlayArea();
+		}
+
+		/// <summary>
+		/// Applies level type specific characteristics to the button.
+		/// </summary>
+		protected void ApplyLevelType() {
+			Button.image.color = LevelType.FieldColor;
+			label.color = LevelType.TextColor;
 		}
 
 		/// <summary>
@@ -37,6 +53,14 @@ namespace BloodyBalls.UI {
 		}
 
 		/// <summary>
+		/// Button that's actually associated with this script.
+		/// </summary>
+		public Button Button {
+			get { return _button; }
+			set { _button = value; }
+		}
+
+		/// <summary>
 		/// Number of the level this button will take us to.
 		/// </summary>
 		public int LevelNumber {
@@ -44,6 +68,17 @@ namespace BloodyBalls.UI {
 			set {
 				_levelNumber = value;
 				label.text = value.ToString();
+			}
+		}
+
+		/// <summary>
+		/// Type of level that this button relates to.
+		/// </summary>
+		public LevelType LevelType {
+			get { return _levelType; }
+			set {
+				_levelType = value;
+				ApplyLevelType();
 			}
 		}
 	}

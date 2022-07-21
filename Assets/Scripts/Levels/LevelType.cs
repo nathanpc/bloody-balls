@@ -16,6 +16,10 @@ namespace BloodyBalls.Levels {
 		[Header("Colorscheme")]
 		[SerializeField] private Color _screenColor;
 		[SerializeField] private Color _fieldColor;
+		[SerializeField] private Color _textColor;
+
+		[Header("Game Design")]
+		[SerializeField] private int _levelNumber;
 
 		[Header("Cells")]
 		[SerializeField] private Cell[] _cellPrefabs;
@@ -39,7 +43,8 @@ namespace BloodyBalls.Levels {
 				throw new System.Exception("At least a single message is needed for each level.");
 
 			// Get our quizzes.
-			quizzes = quizQuestionsContainer.GetComponents<Quiz>();
+			if (quizzes != null)
+				quizzes = quizQuestionsContainer.GetComponents<Quiz>();
 
 			// Start our random number generator.
 			random = new System.Random();
@@ -86,6 +91,14 @@ namespace BloodyBalls.Levels {
 		}
 
 		/// <summary>
+		/// Foreground color of the text in the scene.
+		/// </summary>
+		public Color TextColor {
+			get { return _textColor; }
+			set { _textColor = value; }
+		}
+
+		/// <summary>
 		/// List of messages that will be displayed to the player as notifications.
 		/// </summary>
 		public List<string> Messages {
@@ -123,6 +136,16 @@ namespace BloodyBalls.Levels {
 		public float[] CellProbabilities {
 			get { return _cellProbabilities; }
 			set { _cellProbabilities = value; }
+		}
+
+		/// <summary>
+		/// Level number that this type is going to be.
+		/// </summary>
+		public int LevelNumber {
+			get { return _levelNumber; }
+			set {
+				_levelNumber = value;
+			}
 		}
 	}
 }

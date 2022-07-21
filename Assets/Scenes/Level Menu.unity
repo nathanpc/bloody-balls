@@ -155,7 +155,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.00006785959}
+  m_AnchoredPosition: {x: 0, y: 0.00008515051}
   m_SizeDelta: {x: 0, y: 237.0126}
   m_Pivot: {x: 0, y: 1}
 --- !u!850595691 &55926447
@@ -219,6 +219,97 @@ LightingSettings:
   m_PVRFilteringAtrousPositionSigmaDirect: 0.5
   m_PVRFilteringAtrousPositionSigmaIndirect: 2
   m_PVRFilteringAtrousPositionSigmaAO: 1
+--- !u!1 &56660828
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 56660829}
+  - component: {fileID: 56660832}
+  - component: {fileID: 56660831}
+  - component: {fileID: 56660830}
+  m_Layer: 0
+  m_Name: Diabetes Quizzes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &56660829
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56660828}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.45}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 497017643}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &56660830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56660828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13fc6dbf70b3c83488201da9ad736698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _question: O que sucede na Diabetes tipo 2?
+  _rightAnswerIndex: 0
+  _answers:
+  - "O p\xE2ncreas produz n\xEDveis insuficientes de insulina e/ou o organismo \xE9
+    resistente \xE0 insulina"
+  - "O p\xE2ncreas produz n\xEDveis excessivos de insulina"
+  - "O p\xE2ncreas produz n\xEDveis insuficientes de insulina"
+  - "O p\xE2ncreas deixa de produzir insulina"
+--- !u!114 &56660831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56660828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13fc6dbf70b3c83488201da9ad736698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _question: O que sucede na Diabetes tipo 1?
+  _rightAnswerIndex: 0
+  _answers:
+  - "O p\xE2ncreas n\xE3o produz insulina"
+  - "O p\xE2ncreas produz insulina em excesso"
+  - "O p\xE2ncreas ora produz insulina em excesso, ora em n\xEDveis insuficientes"
+  - "O come\xE7a a produzir glicose"
+--- !u!114 &56660832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56660828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13fc6dbf70b3c83488201da9ad736698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _question: "O que \xE9 a Diabetes?"
+  _rightAnswerIndex: 0
+  _answers:
+  - "Excesso de a\xE7\xFAcar/glicose no sangue"
+  - "Falta de a\xE7\xFAcar/glicose no sangue"
+  - Excesso de insulina no sangue
+  - Excesso de peso
 --- !u!1 &103139488
 GameObject:
   m_ObjectHideFlags: 0
@@ -319,6 +410,143 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &497017642
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 497017643}
+  - component: {fileID: 497017644}
+  m_Layer: 0
+  m_Name: Diabetes Level
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &497017643
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 497017642}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 56660829}
+  m_Father: {fileID: 1990136258}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &497017644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 497017642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d91681df033c9584ea7c6ea979b89da5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: Diabetes
+  _screenColor: {r: 0.10834737, g: 0.10069672, b: 0.18867922, a: 1}
+  _fieldColor: {r: 0, g: 0.16978364, b: 0.31132078, a: 0.92156863}
+  _textColor: {r: 1, g: 1, b: 1, a: 1}
+  _cellPrefabs:
+  - {fileID: 11490368, guid: c4c8282306bda644f803a4d565676c67, type: 3}
+  - {fileID: 11496346, guid: 96273c6220755f848b1926c9e4ec64a9, type: 3}
+  - {fileID: 11490368, guid: 64dfeb2bea0103c4b9845cc042b545e0, type: 3}
+  _cellProbabilities:
+  - 10
+  - 8
+  - 3
+  _notificationBoxColor: {r: 0, g: 0.465518, b: 1, a: 0.92156863}
+  _notificationTextColor: {r: 0.8679245, g: 0.8679245, b: 0.8679245, a: 1}
+  _messages:
+  - "Em 2010, cerca de 34,9% da popula\xE7\xE3o portuguesa entre os 20 e os 79 anos
+    apresentava diabetes ou pr\xE9-diabetes e cerca de 43,6% dos casos n\xE3o estavam
+    diagnosticados."
+  - "Muitas vezes, o cuidado com a alimenta\xE7\xE3o e a pr\xE1tica regular de exerc\xEDcio
+    s\xE3o suficientes para evitar a diabetes ou para a manter controlada."
+  quizQuestionsContainer: {fileID: 56660828}
+--- !u!1 &543975634
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 543975635}
+  - component: {fileID: 543975637}
+  - component: {fileID: 543975636}
+  m_Layer: 0
+  m_Name: Smoking Quizzes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &543975635
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543975634}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.45}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1376825512}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &543975636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543975634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13fc6dbf70b3c83488201da9ad736698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _question: Qual das seguintes abordagens de tratamento tem as maiores taxas de
+    sucesso em ajudar as pessoas a parar de fumar?
+  _rightAnswerIndex: 0
+  _answers:
+  - "Aconselhamento e apoio mais medica\xE7\xE3o"
+  - Acupuntura
+  - "Tratamentos fitoter\xE1picos"
+  - Hipnose
+--- !u!114 &543975637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543975634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13fc6dbf70b3c83488201da9ad736698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _question: "Depois de parar de fumar, quanto tempo normalmente leva at\xE9 que
+    os sintomas de abstin\xEAncia da nicotina comecem a diminuir?"
+  _rightAnswerIndex: 1
+  _answers:
+  - Uma semana
+  - 2 a 4 semanas
+  - 1 a 3 meses
+  - Aproximadamente 1 ano
 --- !u!1 &658334560
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,6 +765,70 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1192462845
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1192462846}
+  - component: {fileID: 1192462847}
+  m_Layer: 0
+  m_Name: Cholesterol Level
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1192462846
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1192462845}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1360544538}
+  m_Father: {fileID: 1990136258}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1192462847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1192462845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d91681df033c9584ea7c6ea979b89da5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: Cholesterol
+  _screenColor: {r: 0.21698111, g: 0.1371169, b: 0.09942531, a: 1}
+  _fieldColor: {r: 0.4339623, g: 0.30460852, b: 0, a: 0.92156863}
+  _textColor: {r: 1, g: 1, b: 1, a: 1}
+  _cellPrefabs:
+  - {fileID: 11490368, guid: 06cc759e00962af4896783e804ffdd75, type: 3}
+  - {fileID: 11496346, guid: e47050c962f43d541b38ab8cf1311c21, type: 3}
+  - {fileID: 11496346, guid: bd3d38a817ea7d74b8375a9487da5f8f, type: 3}
+  _cellProbabilities:
+  - 10
+  - 5
+  - 3
+  _notificationBoxColor: {r: 1, g: 0.7426736, b: 0.17520213, a: 0.92156863}
+  _notificationTextColor: {r: 0.13207549, g: 0.13207549, b: 0.13207549, a: 1}
+  _messages:
+  - "O colesterol \xE9 respons\xE1vel por cerca de um ter\xE7o de todas as doen\xE7as
+    cardiovasculares no mundo. <b>Tome cuidado com este n\xEDvel, e o seu colesterol!</b>"
+  - "Estima-se que o colesterol cause 18% do total das doen\xE7as cerebrovasculares."
+  - "Estima-se que o colesterol cause cerca de 4,4 milh\xF5es de mortes por ano."
+  quizQuestionsContainer: {fileID: 1360544537}
 --- !u!1 &1313187318
 GameObject:
   m_ObjectHideFlags: 0
@@ -687,6 +979,163 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1338389524}
   m_CullTransparentMesh: 1
+--- !u!1 &1360544537
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1360544538}
+  - component: {fileID: 1360544541}
+  - component: {fileID: 1360544540}
+  - component: {fileID: 1360544539}
+  m_Layer: 0
+  m_Name: Cholesterol Quizzes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1360544538
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1360544537}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.45}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1192462846}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1360544539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1360544537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13fc6dbf70b3c83488201da9ad736698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _question: "Para vigiar o risco cardiovascular, todos os adultos com mais de 20
+    anos de idade devem solicitar que seu m\xE9dico pe\xE7a qual dos seguintes testes
+    a cada 4 a 6 anos? "
+  _rightAnswerIndex: 0
+  _answers:
+  - "Perfil lip\xEDdico em jejum"
+  - Glicemia de jejum
+  - "Testes de fun\xE7\xE3o hep\xE1tica"
+  - "Testes de fun\xE7\xE3o renal"
+--- !u!114 &1360544540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1360544537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13fc6dbf70b3c83488201da9ad736698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _question: "Qu\xE3o importante \xE9 o colesterol em fun\xE7\xF5es do corpo?"
+  _rightAnswerIndex: 0
+  _answers:
+  - "Tem um papel importante na estrutura celular e na fun\xE7\xE3o digestiva"
+  - "Tem um papel importante na fun\xE7\xE3o circulat\xF3ria"
+  - "Elimina as toxinas no f\xEDgado"
+  - "\xC9 o excesso de gordura no sangue, portanto sem fun\xE7\xE3o corporal importante"
+--- !u!114 &1360544541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1360544537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13fc6dbf70b3c83488201da9ad736698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _question: "O \"bom\" colesterol \xE9 chamado de colesterol ...?"
+  _rightAnswerIndex: 0
+  _answers:
+  - HDL
+  - LDL
+  - VHDL
+  - VLDL
+--- !u!1 &1376825511
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1376825512}
+  - component: {fileID: 1376825513}
+  m_Layer: 0
+  m_Name: Smoking Level
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1376825512
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1376825511}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 543975635}
+  m_Father: {fileID: 1990136258}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1376825513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1376825511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d91681df033c9584ea7c6ea979b89da5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: Tabagismo
+  _screenColor: {r: 0.14150941, g: 0.14150941, b: 0.14150941, a: 1}
+  _fieldColor: {r: 0.254717, g: 0.254717, b: 0.254717, a: 0.92156863}
+  _textColor: {r: 1, g: 1, b: 1, a: 1}
+  _cellPrefabs:
+  - {fileID: 11496346, guid: 790055999931449429df731175f1671d, type: 3}
+  - {fileID: 11490368, guid: 64dfeb2bea0103c4b9845cc042b545e0, type: 3}
+  _cellProbabilities:
+  - 13
+  - 3
+  _notificationBoxColor: {r: 0.6698113, g: 0.6698113, b: 0.6698113, a: 0.92156863}
+  _notificationTextColor: {r: 0, g: 0, b: 0, a: 1}
+  _messages:
+  - "Fumar \xE9 prejudicial a quase todos os \xF3rg\xE3os do organismo. Os principais
+    problemas relacionados ao fumo s\xE3o: Ataque card\xEDaco e dor no peito, c\xE2ncer
+    do pulm\xE3o, doen\xE7a nos pulm\xF5es que dificulta a respira\xE7\xE3o."
+  - "Embora o vapor produzido pelos cigarros eletr\xF3nicos seja quimicamente menos
+    complexo e potencialmente menos nocivo do que o fumo do tabaco ou do que o vapor
+    do tabaco aquecido, n\xE3o \xE9 isento de riscos, quer para os consumidores,
+    quer para os n\xE3o consumidores expostos em locais fechados."
+  quizQuestionsContainer: {fileID: 543975634}
 --- !u!1 &1676004414
 GameObject:
   m_ObjectHideFlags: 0
@@ -721,6 +1170,7 @@ MonoBehaviour:
   buttonContainer: {fileID: 3175314}
   buttonPrefab: {fileID: 2213614912277642484, guid: 99fbf1ab7f44e5e4d8e52d14a93d1a0e,
     type: 3}
+  levelTypeContainer: {fileID: 1990136257}
   buttonsPerRow: 4
   ySpacing: 30
   margins: 30
@@ -967,7 +1417,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1313187319}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.99969053
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1202,6 +1652,39 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1955524022}
   m_CullTransparentMesh: 1
+--- !u!1 &1990136257
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1990136258}
+  m_Layer: 0
+  m_Name: Level Types
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1990136258
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990136257}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 497017643}
+  - {fileID: 1192462846}
+  - {fileID: 1376825512}
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &8632466614290157231
 PrefabInstance:
   m_ObjectHideFlags: 0
