@@ -87,7 +87,9 @@ namespace BloodyBalls.UI {
 				button.SceneManager = sceneManager;
 				button.LevelNumber = i + 1;
 				button.LevelType = GetLevelType(i);
-				button.Locked = unlockAllLevels || (i > lastFinishedLevel);
+				button.Locked = (i > lastFinishedLevel);
+				if (unlockAllLevels)
+					button.Locked = false;
 			}
 		}
 

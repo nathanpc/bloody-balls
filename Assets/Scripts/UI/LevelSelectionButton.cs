@@ -19,7 +19,7 @@ namespace BloodyBalls.UI {
 		[Header("Game Design")]
 		[SerializeField] private int _levelNumber;
 		[SerializeField] private LevelType _levelType;
-		[SerializeField] private bool _locked;
+		[SerializeField] private bool _locked = false;
 
 		// Start is called before the first frame update
 		void Start() {
