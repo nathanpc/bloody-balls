@@ -898,8 +898,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8632466614290157232}
-        m_TargetAssemblyTypeName: SceneManager, Assembly-CSharp
-        m_MethodName: SwitchToPlayArea
+        m_TargetAssemblyTypeName: BloodyBalls.Managers.SceneManager, Assembly-CSharp
+        m_MethodName: SwitchToLevelMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

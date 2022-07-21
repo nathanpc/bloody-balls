@@ -24,6 +24,10 @@ namespace BloodyBalls.UI {
 
 		[Header("Disposition")]
 		[SerializeField] protected int numberOfLevels = 30;
+		[SerializeField] protected int lastFinishedLevel = 0;
+
+		[Header("Debugging")]
+		public bool unlockAllLevels = false;
 
 		protected List<LevelType> levelTypes;
 		private Rect containerRect;
@@ -53,6 +57,9 @@ namespace BloodyBalls.UI {
 				levelTypes.Add(levelType);
 			}
 
+			// Get our last finished level.
+			lastFinishedLevel = PlayerPrefs.GetInt("LastFinishedLevel", 0);
+
 			// Place the buttons on screen.
 			PlaceButtons();
 		}
@@ -78,9 +85,9 @@ namespace BloodyBalls.UI {
 					buttonContainer.transform);
 				LevelSelectionButton button = buttonObj.GetComponent<LevelSelectionButton>();
 				button.SceneManager = sceneManager;
-				button.Button = buttonObj.GetComponent<Button>();
 				button.LevelNumber = i + 1;
 				button.LevelType = GetLevelType(i);
+				button.Locked = unlockAllLevels || (i > lastFinishedLevel);
 			}
 		}
 

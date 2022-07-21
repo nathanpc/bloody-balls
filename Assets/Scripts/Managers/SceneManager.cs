@@ -48,6 +48,7 @@ namespace BloodyBalls.Managers {
 		/// Switches to the finished level scene.
 		/// </summary>
 		public void SwitchToFinishedLevel() {
+			Destroy(GameObject.Find("Level Type"));
 			SwitchScene(finishedLevel);
 		}
 
@@ -55,6 +56,7 @@ namespace BloodyBalls.Managers {
 		/// Switches to the game over scene.
 		/// </summary>
 		public void SwitchToGameOver() {
+			Destroy(GameObject.Find("Level Type"));
 			SwitchScene(gameOver);
 		}
 	}

@@ -14,10 +14,12 @@ namespace BloodyBalls.UI {
 		[SerializeField] private SceneManager _sceneManager;
 		[SerializeField] private Text label;
 		[SerializeField] private Button _button;
+		[SerializeField] private Image lockImage;
 
 		[Header("Game Design")]
 		[SerializeField] private int _levelNumber;
-		[SerializeField] protected LevelType _levelType;
+		[SerializeField] private LevelType _levelType;
+		[SerializeField] private bool _locked;
 
 		// Start is called before the first frame update
 		void Start() {
@@ -27,6 +29,10 @@ namespace BloodyBalls.UI {
 		/// Takes the user to the level.
 		/// </summary>
 		public void GoToLevel() {
+			// Are we allowed to go?
+			if (Locked)
+				return;
+
 			// Setup the level.
 			LevelType.LevelNumber = LevelNumber;
 			LevelType.gameObject.transform.parent = null;
@@ -80,6 +86,17 @@ namespace BloodyBalls.UI {
 			set {
 				_levelType = value;
 				ApplyLevelType();
+			}
+		}
+
+		/// <summary>
+		/// Is this level locked up?
+		/// </summary>
+		public bool Locked {
+			get { return _locked; }
+			set {
+				_locked = value;
+				lockImage.enabled = value;
 			}
 		}
 	}

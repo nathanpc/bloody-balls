@@ -181,6 +181,8 @@ namespace BloodyBalls.Managers {
 		/// <param name="showNotification">Show a litle notification related to this level?</param>
 		public void NextTurn(bool showNotification) {
 			if (gameStarted && (spawnedCells.Count == 0)) {
+				if (PlayerPrefs.GetInt("LastFinishedLevel", 0) < levelManager.CurrentLevelType.LevelNumber)
+					PlayerPrefs.SetInt("LastFinishedLevel", levelManager.CurrentLevelType.LevelNumber);
 				sceneManager.SwitchToFinishedLevel();
 			}
 
