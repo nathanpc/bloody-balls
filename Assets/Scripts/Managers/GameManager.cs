@@ -326,11 +326,11 @@ namespace BloodyBalls.Managers {
 
 		private void UpgradeDifficulty() {
 			if (nTurn % nTurnToUpgradeMinCellCount == 0) {
-				currentMinCellCount += upgradeMinCellCount;
+				currentMinCellCount += upgradeMinCellCount * levelManager.CurrentLevelType.LevelNumber;
 			}
 
 			if (nTurn % nTurnToUpgradeMaxCellCount == 0) {
-				currentMaxCellCount += upgradeMaxCellCount;
+				currentMaxCellCount += upgradeMaxCellCount * levelManager.CurrentLevelType.LevelNumber;
 			}
 		}
 
