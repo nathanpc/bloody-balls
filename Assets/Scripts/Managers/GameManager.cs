@@ -18,6 +18,7 @@ namespace BloodyBalls.Managers {
 		[SerializeField] protected LevelManager levelManager;
 		[SerializeField] protected UIManager uiManager;
 		[SerializeField] protected SceneManager sceneManager;
+		[SerializeField] protected PopupQuizManager quizManager;
 
 		[Header("Player")]
 		[SerializeField] protected float ballSpeed = 10;
@@ -93,7 +94,7 @@ namespace BloodyBalls.Managers {
 		private int nTurn = 0;
 		private int ballToAddCount = 0;
 
-		void Start() {
+		IEnumerator Start() {
 			if (brickPrefabs.Length != brickProbabilities.Length)
 				throw new System.Exception("Cell Prefabs and Probabilities don't have the same length!");
 
@@ -103,6 +104,11 @@ namespace BloodyBalls.Managers {
 			SetupProbabilities();
 			SetupPlayer();
 			StartGame();
+
+			// Add the quiz popup to the scene.
+			sceneManager.AddQuizPopup();
+			yield return null;
+			quizManager = FindObjectOfType<PopupQuizManager>();
 		}
 
 		/// <summary>
@@ -404,6 +410,16 @@ namespace BloodyBalls.Managers {
 		private void AddBall_OnCollision(AddBall sender) {
 			spawnedCells.Remove(sender.transform);
 			ballToAddCount++;
+
+			// Show quiz.
+			quizManager.Open(levelManager.CurrentLevelType.GetRandomQuiz(),
+				() => {
+					Debug.Log("Right Answer!");
+					quizManager.Close();
+				}, () => {
+					Debug.Log("Wrong Answer!");
+					quizManager.Close();
+				});
 		}
 
 		private void AddCoin_OnCollision(AddCoin sender) {

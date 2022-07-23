@@ -43,7 +43,7 @@ namespace BloodyBalls.Levels {
 				throw new System.Exception("At least a single message is needed for each level.");
 
 			// Get our quizzes.
-			if (quizzes != null)
+			if (quizzes == null)
 				quizzes = quizQuestionsContainer.GetComponents<Quiz>();
 
 			// Start our random number generator.

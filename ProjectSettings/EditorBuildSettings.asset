@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Play Area.unity
     guid: 821341f4ba031a14cb3d84abc5303edc
   - enabled: 1
+    path: Assets/Scenes/Quiz Popup.unity
+    guid: 5002fce3c058682469c41df5c0462574
+  - enabled: 1
     path: Assets/Scenes/Finished Level.unity
     guid: 7d78671bcfa01f44ebb86fe834e5d4cd
   - enabled: 1

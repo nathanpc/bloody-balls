@@ -333,6 +333,37 @@ PrefabInstance:
       objectReference: {fileID: 2053240551}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bcd3d435423fe4c049fc85e9bcfe212a, type: 3}
+--- !u!1 &253610917
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 253610918}
+  m_Layer: 0
+  m_Name: DELETE LATER
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &253610918
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253610917}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 845022817}
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &274085276
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,6 +443,98 @@ RectTransform:
   m_AnchoredPosition: {x: 76, y: 305}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &548779175
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 548779179}
+  - component: {fileID: 548779178}
+  - component: {fileID: 548779177}
+  - component: {fileID: 548779176}
+  m_Layer: 0
+  m_Name: Cholesterol Quizzes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &548779176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548779175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13fc6dbf70b3c83488201da9ad736698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _question: "Para vigiar o risco cardiovascular, todos os adultos com mais de 20
+    anos de idade devem solicitar que seu m\xE9dico pe\xE7a qual dos seguintes testes
+    a cada 4 a 6 anos? "
+  _rightAnswerIndex: 0
+  _answers:
+  - "Perfil lip\xEDdico em jejum"
+  - Glicemia de jejum
+  - "Testes de fun\xE7\xE3o hep\xE1tica"
+  - "Testes de fun\xE7\xE3o renal"
+--- !u!114 &548779177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548779175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13fc6dbf70b3c83488201da9ad736698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _question: "Qu\xE3o importante \xE9 o colesterol em fun\xE7\xF5es do corpo?"
+  _rightAnswerIndex: 0
+  _answers:
+  - "Tem um papel importante na estrutura celular e na fun\xE7\xE3o digestiva"
+  - "Tem um papel importante na fun\xE7\xE3o circulat\xF3ria"
+  - "Elimina as toxinas no f\xEDgado"
+  - "\xC9 o excesso de gordura no sangue, portanto sem fun\xE7\xE3o corporal importante"
+--- !u!114 &548779178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548779175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13fc6dbf70b3c83488201da9ad736698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _question: "O \"bom\" colesterol \xE9 chamado de colesterol ...?"
+  _rightAnswerIndex: 0
+  _answers:
+  - HDL
+  - LDL
+  - VHDL
+  - VLDL
+--- !u!4 &548779179
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548779175}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.45}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 845022817}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &621474881
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -740,6 +863,71 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 695348698}
   m_CullTransparentMesh: 1
+--- !u!1 &845022815
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 845022817}
+  - component: {fileID: 845022816}
+  m_Layer: 0
+  m_Name: Level Type
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &845022816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845022815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d91681df033c9584ea7c6ea979b89da5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: Cholesterol
+  _screenColor: {r: 0.21698111, g: 0.1371169, b: 0.09942531, a: 1}
+  _fieldColor: {r: 0.4339623, g: 0.30460852, b: 0, a: 0.92156863}
+  _textColor: {r: 1, g: 1, b: 1, a: 1}
+  _levelNumber: 0
+  _cellPrefabs:
+  - {fileID: 11490368, guid: 06cc759e00962af4896783e804ffdd75, type: 3}
+  - {fileID: 11496346, guid: e47050c962f43d541b38ab8cf1311c21, type: 3}
+  - {fileID: 11496346, guid: bd3d38a817ea7d74b8375a9487da5f8f, type: 3}
+  _cellProbabilities:
+  - 10
+  - 5
+  - 3
+  _notificationBoxColor: {r: 1, g: 0.7426736, b: 0.17520213, a: 0.92156863}
+  _notificationTextColor: {r: 0.13207549, g: 0.13207549, b: 0.13207549, a: 1}
+  _messages:
+  - "O colesterol \xE9 respons\xE1vel por cerca de um ter\xE7o de todas as doen\xE7as
+    cardiovasculares no mundo. <b>Tome cuidado com este n\xEDvel, e o seu colesterol!</b>"
+  - "Estima-se que o colesterol cause 18% do total das doen\xE7as cerebrovasculares."
+  - "Estima-se que o colesterol cause cerca de 4,4 milh\xF5es de mortes por ano."
+  quizQuestionsContainer: {fileID: 548779175}
+--- !u!4 &845022817
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845022815}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 548779179}
+  m_Father: {fileID: 253610918}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &915269322 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 6194866, guid: a524fd9eba5b94fc78bca16352d9000f,
